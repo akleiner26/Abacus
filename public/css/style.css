@@ -16,6 +16,7 @@ body {
     border: 1px solid #d3d3d3;
     border-radius: 5px;
     margin-top: 50px;
+    margin-bottom: 70px;
 }
 
 /* .container {
@@ -36,6 +37,11 @@ h2 {
     background: #00ced1;
     color: white;
 }   
+
+footer {
+    background: #e4e4e4;
+    padding: 20px;
+}
 
 .opaque {
     background: lightgray;
