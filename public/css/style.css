@@ -17,35 +17,32 @@ body {
     border-radius: 5px;
     margin-top: 50px;
     margin-bottom: 70px;
+    box-shadow: 0px 2px 8px #545454;
 }
 
-/* .container {
-    background: white;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    padding: 80px 0px;
-    margin-top: 50px;
-    width: 450px;
-} */
-
-h2 {
-    padding-bottom: 30px;
-    color: #975daf;
+a:hover {
+    text-decoration: none;
 }
 
 .btn {
-    background: #00ced1;
+    background: #1dacd6;
     color: white;
 }   
+
+.btn:hover {
+    background: #25bbe9;
+    color: white;
+}
 
 footer {
     background: #e4e4e4;
     padding: 20px;
+    width: 100vw;
 }
 
 .opaque {
     background: lightgray;
-    opacity: 0.3;
+    opacity: 0.4;
     width: 100vw;
     height: 100vh;
     position: absolute;
