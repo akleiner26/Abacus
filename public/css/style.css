@@ -13,14 +13,37 @@ body {
 
 .container {
     background: white;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+
+/* .container {
+    background: white;
     border: 1px solid #eee;
     border-radius: 5px;
     padding: 80px 0px;
     margin-top: 50px;
     width: 450px;
-}
+} */
 
 h2 {
     padding-bottom: 30px;
     color: #975daf;
+}
+
+.btn {
+    background: #00ced1;
+    color: white;
+}   
+
+.opaque {
+    background: lightgray;
+    opacity: 0.3;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
