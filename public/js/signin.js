@@ -15,6 +15,8 @@ $(document).ready(function () {
 			password: passwordInput.val().trim()
 		};
 
+		console.log(userData);
+
 		if (!userData.email || !userData.password) {
 			return;
 		}
@@ -23,19 +25,19 @@ $(document).ready(function () {
 		signinUser(userData.email, userData.password);
 		emailInput.val("");
 		passwordInput.val("");
-	});
 
-	// Does a post to the "api/signin" route and redirects to the homepage
-	function signinUser(email, password) {
-		$.post("/api/signin", {
-			email: email,
-			password: password
-		})
-			.then(function () {
-				window.location.replace("/homepage");
+		// Does a post to the "api/signin" route and redirects to the user portal
+		function signinUser(email, password) {
+			$.post("/api/signin", {
+				email: email,
+				password: password
 			})
-			.catch(function (err) {
-				console.log(err);
-			});
-	}
+				.then(function () {
+					window.location.replace("/userportal");
+				})
+				.catch(function (err) {
+					console.log(err);
+				});
+		}
+	});
 });
