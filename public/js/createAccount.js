@@ -13,6 +13,7 @@ $(document).ready(function () {
 	// Validates that email and password fields are not blank when 'create account' button is clicked
 	registerForm.on("submit", function (event) {
 		event.preventDefault();
+		console.log("--------------submitted---------------");
 
 		let userData = {
 			first_name: firstNameInput.val().trim(),
