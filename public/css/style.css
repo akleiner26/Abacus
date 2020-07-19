@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url('../images/57\ Winter_Song\ copy.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.container {
+    background: white;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    box-shadow: 0px 2px 8px #545454;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.btn {
+    background: #1dacd6;
+    color: white;
+}   
+
+.btn:hover {
+    background: #25bbe9;
+    color: white;
+}
+
+footer {
+    background: #e4e4e4;
+    padding: 20px;
+    width: 100vw;
+}
+
+.opaque {
+    background: lightgray;
+    opacity: 0.4;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}

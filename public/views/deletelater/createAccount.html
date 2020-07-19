@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+	<title>DRAFT: Register for an account</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" href="../../css/signuplogin.css">
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body class="h-100 d-flex flex-column">
+
+	<!-- Insert navbar -->
+
+	<div class="container wrapper">
+		<h4 class="text-center">Insert animated css here</h4>
+		<h2 class="text-center">Register for an Account</h2>
+
+		<div class="row p-5">
+			<div class="col-12">
+
+				<form class="register">
+					
+					<div class="form-group">
+						<label for="inputFirstName">First Name</label>
+						<input type="text" class="form-control" id="first-name-input" placeholder="First Name">
+					</div>
+					<div class="form-group">
+						<label for="inputLastName">Last Name</label>
+						<input type="text" class="form-control" id="last-name-input" placeholder="Last Name">
+					</div>
+					<div class="form-group">
+						<label for="inputUserType">Select an option:</label>
+						<select class="form-control" id="user-type-input">
+							<option>Student</option>
+							<option>Teacher</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="inputEmail1">Email address</label>
+						<input type="email" class="form-control" id="email-input" placeholder="Email">
+					</div>
+					<div class="form-group">
+						<label for="inputPassword1">Password</label>
+						<input type="password" class="form-control" id="password-input" placeholder="Password">
+					</div>
+					<div style="display: none" id="alert" class="alert alert-danger" role="alert">
+						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+						<span class="sr-only">Error:</span> <span class="msg"></span>
+					</div>
+					<center>
+						<button type="submit" class="btn btn-default mt-4 mb-2">Create Account</button>
+						<p class="smalltext">Already registered? <a href="/login">Log in here.</a></p>
+					</center>
+				</form>
+				
+			</div>
+		</div>
+	</div>
+
+	<footer class="mt-auto">
+		<p>Add background credits</p>
+		<p>Add links to githubs</p>
+		<p>Add copyright</p>
+	</footer>
+
+	<div class="opaque"></div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/createAccount.js"></script>
+
+</body>
+
+</html>
