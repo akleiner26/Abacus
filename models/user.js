@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
     },
 
     user_type: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false
     },
 

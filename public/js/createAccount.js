@@ -6,7 +6,7 @@ $(document).ready(function () {
 	let registerForm = $("form.register");
 	let firstNameInput = $("input#first-name-input");
 	let lastNameInput = $("input#last-name-input");
-	let userTypeInput = $("input#user-type-input");
+	let userTypeInput = $("#user-type-input");
 	let emailInput = $("input#email-input");
 	// let teacherIdInput = $("input#teacherId-Input");
 	let passwordInput = $("input#password-input");
@@ -16,7 +16,7 @@ $(document).ready(function () {
 		event.preventDefault();
 		console.log("--------------submitted---------------");
 
-		// console.log(userTypeInput.option.val());
+		console.log(userTypeInput);
 
 		let userData = {
 			first_name: firstNameInput.val().trim(),
@@ -30,38 +30,39 @@ $(document).ready(function () {
 
 		console.log(userData);
 
-		// if (!userData.email || !userData.password) {
-		// 	return;
-		// }
-		// // Run function registerUser if email and password are valid
-		// registerUser(userData.first_name, userData.last_name, userData.user_type, userData.email, userData.password);
-		// firstNameInput.val("");
-		// lastNameInput.val("");
-		// userTypeInput.val("");
-		// emailInput.val("");
-		// passwordInput.val("");
+		if (!userData.email || !userData.password) {
+			return;
+		}
+		// Run function registerUser if email and password are valid
+		registerUser(userData.first_name, userData.last_name, userData.user_type, userData.email, userData.password);
+		firstNameInput.val("");
+		lastNameInput.val("");
+		userTypeInput.val("");
+		emailInput.val("");
+		passwordInput.val("");
 
 		
 
 		// // Does a post to the register route and redirects to homepage (index) if successful
-		// function registerUser(first_name, last_name, user_type, email, password) {
-		// 	$.post("/api/createAccount", {
-		// 		first_name: first_name,
-		// 		last_name: last_name,
-		// 		user_type: user_type,
-		// 		email: email,
-		// 		password: password
-		// 	})
-		// 		.then(function (data) {
-		// 			window.location.replace("/homepage");
-		// 			// Throws up bootstrap alert if there is an error
-		// 		})
-		// 		.catch(handleLoginErr);
-		// }
+		function registerUser(first_name, last_name, user_type, email, password) {
+			$.post("/api/createAccount", {
+				first_name: first_name,
+				last_name: last_name,
+				user_type: user_type,
+				email: email,
+				password: password
+			})
+				.then(function (data) {
+					window.location.replace("/homepage");
+					// Throws up bootstrap alert if there is an error
+				})
+				//for some reason this was causing an error. then.catch is not a function
+				// .catch(handleLoginErr);
+		}
 
-		// function handleLoginErr(err) {
-		// 	$("#alert .msg").text(err.responseJSON);
-		// 	$("#alert").fadeIn(500);
-		// }
+		function handleLoginErr(err) {
+			$("#alert .msg").text(err.responseJSON);
+			$("#alert").fadeIn(500);
+		}
 	});
 });
