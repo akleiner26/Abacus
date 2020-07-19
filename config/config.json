@@ -2,10 +2,14 @@
     "development": {
       "username": "root",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "password": "anorak3/pigeon",
 =======
       "password": "Phillies35",
 >>>>>>> a3bfbdd0705d7a933cc2e77539b1df3b6087ecb0
+=======
+      "password": "anorak3/pigeon",
+>>>>>>> c51111675d77024d9aee67751d354dc19dd83d93
       "database": "abacusDB",
       "host": "127.0.0.1",
       "dialect": "mysql",
