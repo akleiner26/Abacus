@@ -6,18 +6,18 @@ $(document).ready(function () {
 	let registerForm = $("form.register");
 	let firstNameInput = $("input#first-name-input");
 	let lastNameInput = $("input#last-name-input");
-	let userTypeInput = $("input#user-type-input");
+	let userTypeInput = $("#user-type-input");
 	let emailInput = $("input#email-input");
 	// let teacherIdInput = $("input#teacherId-Input");
 	let passwordInput = $("input#password-input");
 
+	
 	// Validates that email and password fields are not blank when 'create account' button is clicked
 	registerForm.on("submit", function (event) {
 		event.preventDefault();
 		console.log("--------------submitted---------------");
 
-		// console.log(userTypeInput.option.val());
-
+		console.log(userTypeInput.val());
 		let userData = {
 			first_name: firstNameInput.val().trim(),
 			last_name: lastNameInput.val().trim(),
