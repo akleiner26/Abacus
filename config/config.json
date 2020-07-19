@@ -1,24 +1,27 @@
 {
     "development": {
       "username": "root",
-      "password": "haRumi1027!",
+      "password": "anorak3/pigeon",
       "database": "abacusDB",
       "host": "127.0.0.1",
-      "dialect": "mysql"
+      "dialect": "mysql",
+      "port": 3306
     },
     "test": {
       "username": "root",
       "password": null,
       "database": "abacus_test",
       "host": "127.0.0.1",
-      "dialect": "mysql"
+      "dialect": "mysql",
+      "port": 3306
     },
     "production": {
       "username": "root",
       "password": null,
       "database": "abacus_production",
       "host": "127.0.0.1",
-      "dialect": "mysql"
+      "dialect": "mysql",
+      "port": 3306
     }
   }
   
