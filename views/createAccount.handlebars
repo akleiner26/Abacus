@@ -47,8 +47,8 @@
                 <div class="form-group">
                     <label for="inputUserType">Select an option:</label>
                     <select class="form-control" id="user-type-input">
-                        <option>Student</option>
-                        <option>Teacher</option>
+                        <option value="Student">Student</option>
+                        <option value="Teacher">Teacher</option>
                     </select>
                 </div>
                 {{!-- Email --}}
@@ -56,11 +56,13 @@
                     <label for="inputEmail1">Email address</label>
                     <input type="email" class="form-control" id="email-input" placeholder="Email">
                 </div>
+
+                {{!-- Teacher ID should be added as a condition if the user is a student. We should also probably have it take in the teacher's name but then save it as the teacher id into workbench --}}
                 {{!-- Teacher Id --}}
-                <div class="form-group">
-                    <label for="inputTeacherId">Email address</label>
+                {{!-- <div class="form-group">
+                    <label for="inputTeacherId">Teacher ID</label>
                     <input type="text" class="form-control" id="teacherId-input" placeholder="Email">
-                </div>
+                </div> --}}
                 {{!-- Password --}}
                 <div class="form-group">
                     <label for="inputPassword1">Password</label>
