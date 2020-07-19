@@ -1,15 +1,16 @@
-// Ensure lines 49-56 are working for bootstrap error --- not sure how this works??
-
+// NOTES
+// Look into bootstrap error at bottom of code -- not sure exactly how it works
+// Check post route with api-routes.js
 
 $(document).ready(function () {
 	let registerForm = $("form.register");
-	let firstNameInput = $("input#email-input");
-	let lastNameInput = $("input#email-input");
-	let userTypeInput = $("input#email-input");
+	let firstNameInput = $("input#first-name-input");
+	let lastNameInput = $("input#last-name-input");
+	let userTypeInput = $("input#user-type-input");
 	let emailInput = $("input#email-input");
 	let passwordInput = $("input#password-input");
 
-	// Validate that email and password are not blank when 'create account' button is clicked
+	// Validates that email and password fields are not blank when 'create account' button is clicked
 	registerForm.on("submit", function (event) {
 		event.preventDefault();
 
@@ -25,7 +26,7 @@ $(document).ready(function () {
 			return;
 		}
 		// Run function registerUser if email and password are valid
-		registerUser(userData.first_name, userData.last_name, userData.user_type,userData.email, userData.password);
+		registerUser(userData.first_name, userData.last_name, userData.user_type, userData.email, userData.password);
 		firstNameInput.val("");
 		lastNameInput.val("");
 		userTypeInput.val("");
@@ -35,7 +36,7 @@ $(document).ready(function () {
 
 	// Does a post to the register route and redirects to homepage (index) if successful
 	function registerUser(first_name, last_name, user_type, email, password) {
-		$.post("/api/signup", {
+		$.post("/api/createAccount", {
 			first_name: first_name,
 			last_name: last_name,
 			user_type: user_type,
