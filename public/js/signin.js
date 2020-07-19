@@ -1,3 +1,6 @@
+// DONE - Matched with signin.handlebars
+// Check post route with api-routes.js
+
 $(document).ready(function () {
 	let signinForm = $("form.signin");
 	let emailInput = $("input#email-input");
@@ -16,13 +19,13 @@ $(document).ready(function () {
 			return;
 		}
 
-		// Runs signinUser function if we have an email and password
+		// Runs signinUser function if email and password are valid and resets signin form
 		signinUser(userData.email, userData.password);
 		emailInput.val("");
 		passwordInput.val("");
 	});
 
-	// Does a post to our "api/signin" route and redirects us the the members page if successful
+	// Does a post to the "api/signin" route and redirects to the homepage
 	function signinUser(email, password) {
 		$.post("/api/signin", {
 			email: email,

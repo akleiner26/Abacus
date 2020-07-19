@@ -1,0 +1,141 @@
+.abacus {
+    height: 60px;
+    width: 120px;
+    position: relative;
+}
+
+.left, .right {
+    width: 8px;
+    height: 60px;
+    background: #987654;
+    border-radius: 2px;
+    position: absolute;
+}
+
+.left {
+    left: 0%;
+}
+
+.right {
+    right: 0%;
+}
+
+.bar {
+    width: 80%;
+    height: 5px;
+    background: lightgray;
+    position: absolute;
+    left: 10%;
+}
+
+.bar1 {
+    top: 10%;
+}
+
+.bar2 {
+    top: 46%;
+}
+
+.bar3 {
+    top: 82%;
+}
+
+.block {
+    width: 10px;
+    height: 11px;
+    position: absolute;
+    border-radius: 3px;
+    animation-iteration-count: infinite;
+}
+
+.red1, .red2 {
+    background: #ff4500;
+    top: 5%;
+    animation-duration: 4s;
+}
+
+.red1 {
+    animation-name: moveRed1;
+}
+
+.red2 {
+    animation-name: moveRed2;
+}
+
+@keyframes moveRed1 {
+    0%   {left:13%}
+    25%  {left:30%}
+    50%  {left:26%}
+    75%  {left:35%}
+    100% {left:13%}
+  }
+
+@keyframes moveRed2 {
+    0%   {left:28%}
+    25%  {left:45%}
+    50%  {left:41%}
+    75%  {left:50%}
+    100% {left:28%}
+}
+
+.blue1, .blue2 {
+    background: #23d3d3;
+    top: 41%;
+    animation-duration: 5s;
+}
+
+.blue1 {
+    animation-name: moveBlue1;
+}
+
+.blue2 {
+    animation-name: moveBlue2;
+}
+
+@keyframes moveBlue1 {
+    0%   {left:55%}
+    25%  {left:40%}
+    50%  {left:60%}
+    75%  {left:20%}
+    100% {left:55%}
+  }
+
+@keyframes moveBlue2 {
+    0%   {left:80%}
+    25%  {left:70%}
+    50%  {left:70%}
+    75%  {left:65%}
+    100% {left:80%}
+}
+
+.purple1, .purple2 {
+    background: #c947f5;
+    top: 76%;
+    animation-duration: 6s;
+}
+
+.purple1 {
+    left: 55%;
+    animation-name: movePurple1;
+}
+
+.purple2 {
+    left: 57%;
+    animation-name: movePurple2;
+}
+
+@keyframes movePurple1 {
+    0%   {left:37%}
+    25%  {left:42%}
+    50%  {left:37%}
+    75%  {left:42%}
+    100% {left:37%}
+  }
+
+@keyframes movePurple2 {
+    0%   {left:47%}
+    25%  {left:52%}
+    50%  {left:47%}
+    75%  {left:52%}
+    100% {left:47%}
+}

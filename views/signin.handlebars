@@ -1,0 +1,60 @@
+{{!-- NOTES --}}
+{{!-- Look into error msg -- not sure how it exactly works --}}
+{{!-- Check/test link to createAccount.handlebars at bottom of page --}}
+
+
+<!-- Insert navbar -->
+
+<div class="container wrapper">
+
+    {{!-- Abacus animation --}}
+    <center>
+        <div class='abacus'>
+            <div class='left'></div>
+            <div class='right'></div>
+            <div class='bar bar1'></div>
+            <div class='bar bar2'></div>
+            <div class='bar bar3'></div>
+            <div class='block red1'></div>
+            <div class='block red2'></div>
+            <div class='block blue1'></div>
+            <div class='block blue2'></div>
+            <div class='block purple1'></div>
+            <div class='block purple2'></div>
+            <div class='block yellow1'></div>
+            <div class='block yellow2'></div>
+        </div>
+    </center>
+
+    <h2 class="text-center">Sign In</h2>
+
+    <div class="row p-5">
+        <div class="col-12">
+
+            {{!-- Sign in Form --}}
+            <form class="signin">
+                {{!-- Email --}}
+                <div class="form-group">
+                    <label for="inputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="email-input" placeholder="Email">
+                </div>
+                {{!-- Password --}}
+                <div class="form-group">
+                    <label for="inputPassword1">Password</label>
+                    <input type="password" class="form-control" id="password-input" placeholder="Password">
+                </div>
+                {{!-- Error message --}}
+                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span> <span class="msg"></span>
+                </div>
+                {{!-- Button on link to register page --}}
+                <center>
+                    <button type="submit" class="btn btn-default mt-4 mb-2">Create Account</button>
+                    <p class="smalltext">Don't have an account? <a href="createAccount">Register here.</a></p>
+                </center>
+            </form>
+
+        </div>
+    </div>
+</div>
