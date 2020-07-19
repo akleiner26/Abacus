@@ -8,6 +8,7 @@ $(document).ready(function () {
 	let lastNameInput = $("input#last-name-input");
 	let userTypeInput = $("input#user-type-input");
 	let emailInput = $("input#email-input");
+	let teacherIdInput = $("input#teacherId-Input");
 	let passwordInput = $("input#password-input");
 
 	// Validates that email and password fields are not blank when 'create account' button is clicked
@@ -20,6 +21,7 @@ $(document).ready(function () {
 			last_name: lastNameInput.val().trim(),
 			user_type: userTypeInput.val(),
 			email: emailInput.val().trim(),
+			teacher_id: teacherIdInput.val().trim(),
 			password: passwordInput.val().trim()
 		};
 
