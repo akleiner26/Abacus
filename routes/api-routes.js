@@ -16,15 +16,19 @@ module.exports = function(app) {
   app.post("/api/createAccount", function(req, res) {
     console.log("---------------------------------------posted--------------------------------------------");
     db.User.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      user_type: req.body.user_type
     })
       .then(function() {
+        console.log("---------------------redirecting-----------------------");
         res.redirect(307, "/api/signin");
       })
-      .catch(function(err) {
-        res.status(401).json(err);
-      });
+      // .catch(function(err) {
+      //   res.status(401).json(err);
+      // });
   });
 
   // Route for logging user out

@@ -1,1 +1,1 @@
-INSERT INTO users (first_name, last_name, email, user_type, teacher_id, password, createdAt, updatedAt) VALUES ("Vince", "Gubitosi", "vince@email.com", 1, null, "password1", "0000-00-00 00:00:00", "0000-00-00 00:00:00");
+INSERT INTO users (first_name, last_name, email, user_type, teacher_id, password, createdAt, updatedAt) VALUES ("Vince", "Gubitosi", "vince@email.com", "Teacher", null, "password1", "0000-00-00 00:00:00", "0000-00-00 00:00:00");
