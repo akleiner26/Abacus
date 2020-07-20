@@ -29,5 +29,12 @@ module.exports = function(sequelize, DataTypes) {
     }
 
   });
+
+  Assignment.associate = function(models) {
+    Assignment.hasMany(models.assign, {
+        onDelete: "cascade"
+      });
+  };
+
   return Assignment;
 };
