@@ -2,7 +2,7 @@
 var bcrypt = require("bcryptjs");
 // Creating our User model
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
+  var Teacher = sequelize.define("Teacher", {
     // The email cannot be null, and must be a proper email before creation
     first_name: {
       type: DataTypes.STRING,
@@ -22,17 +22,7 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true
       }
     },
-
-    user_type: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-
-    teacher_id: {
-      type: DataTypes.INTEGER
-
-    },
-    // The password cannot be null
+    
     password: {
       type: DataTypes.STRING,
       allowNull: false
@@ -42,21 +32,21 @@ module.exports = function(sequelize, DataTypes) {
 
 //how to assign a reflexive foreign key.
 
-  User.associate = function(model) {
-    User.belongsTo(model.User, {
-      foreignKey: {
+  // User.associate = function(model) {
+  //   User.belongsTo(model.User, {
+  //     foreignKey: {
         
-      }
-    })
-  };
+  //     }
+  //   })
+  // };
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
-  User.prototype.validPassword = function(password) {
+  Teacher.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
   };
   // Hooks are automatic methods that run during various phases of the User Model lifecycle
   // In this case, before a User is created, we will automatically hash their password
-  User.addHook("beforeCreate", function(user) {
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+  Teacher.addHook("beforeCreate", function(teacher) {
+    teacher.password = bcrypt.hashSync(teacher.password, bcrypt.genSaltSync(10), null);
   });
-  return User;
+  return Teacher;
 };
