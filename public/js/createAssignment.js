@@ -6,10 +6,6 @@ $(document).ready(function () {
 	let newAssignForm = $("form.newAssign");
 	let titleInput = $("input#title");
 	let description = $("input#description");
-	let userTypeInput = $("#user-type-input");
-	let emailInput = $("input#email-input");
-	// let teacherIdInput = $("input#teacherId-Input");
-	let passwordInput = $("input#password-input");
 
 	
 	// Validates that email and password fields are not blank when 'create account' button is clicked
