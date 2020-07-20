@@ -11,6 +11,18 @@ module.exports = function(app) {
     res.json(req.user);
   });
 
+  app.get("/api/students", function(req, res) {
+    db.User.findAll({})
+      .then(function(studentData) {
+        res.json(studentData);
+      });
+
+      console.log("--------------------------");
+    console.log("TESTING HANDLEBARS");
+
+    // res.json(req)
+  })
+
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
