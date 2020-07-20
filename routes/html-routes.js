@@ -17,7 +17,14 @@ module.exports = function (app) {
 //Currently shows the user portal but without login authentication 
     res.render("index");
   });
-
+app.get("/assignments", function (req, res) {
+  //under the assumption we use one page to create and view assignments, otherwise need to split this into two
+      res.render("assignments");
+    });
+app.get("/grades", function (req, res) {
+  //assuming we use a grades table
+      res.render("grades");
+    });
   app.get("*", function (req, res) {
 //sets the "homepage" as create an account. I suspect we may want to make a true homepage that give user options.
     res.render("createAccount");
