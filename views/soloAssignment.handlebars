@@ -1,0 +1,23 @@
+<h1 class="soloAssignHead">
+    {{this.title}}
+</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Grade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">
+          {{#each student.id}}
+      </th>
+      <td>{{student.first_name}}</td>
+      <td>{{student.last_name}}</td>
+      <td>{{this.grade}}</td>
+    </tr>
+  </tbody>
+</table>

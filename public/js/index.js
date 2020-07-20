@@ -1,10 +1,15 @@
-const isAuthenticated = require("../../config/middleware/isAuthenticated");
+// const isAuthenticated = require("../../config/middleware/isAuthenticated");
 
 $(document).ready(function () {
 	let studentsBtn = $("#studentsBtn");
+	let assignmentsBtn = $("#assignmentsBtn");
 
 	studentsBtn.on("click", function () {
 		window.location.replace("/students");
+	})
+
+	assignmentsBtn.on("click", function () {
+		window.location.replace("/assignments");
 	})
 
 	// This file just does a GET request to figure out which user is logged in
@@ -12,5 +17,5 @@ $(document).ready(function () {
 	$.get("/api/user_data", isAuthenticated).then(function (data) {
 		$(".member-name").text(data.email);
 	});
-	console.log(userData)
-}).then();
+	// console.log(userData)
+})
