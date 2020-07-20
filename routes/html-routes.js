@@ -1,6 +1,6 @@
-// Requiring path to so we can use relative routes to our HTML files
 var path = require("path");
 var express = require("express");
+var db = require("../models");
 
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
@@ -8,18 +8,31 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 // Routes for handlebars
 module.exports = function (app) {
 
+  // Sign in page
   app.get("/signin", function (req, res) {
-//sign in page
     res.render("signin");
   });
 
+  // Currently shows the user portal but without login authentication 
   app.get("/userportal", function (req, res) {
-//Currently shows the user portal but without login authentication 
     res.render("index");
   });
 
+  // View by students page 
+  app.get("/students", function (req, res) {
+    db.User.findAll({})
+      .then(function (studentData) {
+        
+        console.log(studentData);
+
+        // Create JSON with data from terminal and pass through in res.render
+        
+        res.render("viewByStudents", {Users: studentData});
+      });
+  });
+
+  // Sets the "homepage" as create an account. I suspect we may want to make a true homepage that gives user options.
   app.get("*", function (req, res) {
-//sets the "homepage" as create an account. I suspect we may want to make a true homepage that give user options.
     res.render("createAccount");
   });
 
