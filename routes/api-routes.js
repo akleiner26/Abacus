@@ -28,12 +28,11 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/createAccount", function(req, res) {
     console.log("---------------------------------------posted--------------------------------------------");
-    db.User.create({
+    db.Teacher.create({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       email: req.body.email,
       password: req.body.password,
-      user_type: req.body.user_type
     })
       .then(function() {
         console.log("---------------------redirecting-----------------------");
