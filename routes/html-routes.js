@@ -43,6 +43,11 @@ module.exports = function (app) {
     res.render("createAccount");
   });
 
+  app.get("/assignments/:assignment", function (req, res) {
+    res.render("soloAssignment");
+  });
+
+  
   // app.get("/", function (req, res) {
   //   // If the user already has an account send them to the members page
   //   if (req.user) {
