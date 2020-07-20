@@ -17,6 +17,16 @@ module.exports = function (app) {
     res.render("createAssignment");
   });
   // View by students page 
+  // app.get("/:teacherId/students", isAuthenticated, function (req, res) {
+  //   let currentTeacher = req.params.teacherId;
+
+  //   db.Student.findAll({ raw: true })
+  //     .then(function (userData) {
+  //       // console.log(userData);
+
+  //       res.render("viewByStudents", { students: userData });
+  //     });
+  // });
   app.get("/students", isAuthenticated, function (req, res) {
     db.Student.findAll({ raw: true })
       .then(function (userData) {
