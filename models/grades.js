@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     var Grade = sequelize.define("Grade", {
     
       student: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
   
