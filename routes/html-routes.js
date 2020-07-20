@@ -33,7 +33,7 @@ module.exports = function (app) {
   });
   app.get("/assignments", isAuthenticated, function (req, res) {
     //under the assumption we use one page to create and view assignments, otherwise need to split this into two
-    res.render("assignments");
+    res.render("viewAssignments");
   });
   app.get("/grades", isAuthenticated, function (req, res) {
     //assuming we use a grades table
