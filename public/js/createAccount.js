@@ -54,7 +54,7 @@ $(document).ready(function () {
 				password: password
 			})
 				.then(function (data) {
-					window.location.replace("/homepage");
+					window.location.replace("/userportal");
 					// Throws up bootstrap alert if there is an error
 				})
 				//for some reason this was causing an error. then.catch is not a function

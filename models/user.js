@@ -40,6 +40,8 @@ module.exports = function(sequelize, DataTypes) {
 
   });
 
+//how to assign a reflexive foreign key.
+
   User.associate = function(model) {
     User.belongsTo(model.User, {
       foreignKey: {

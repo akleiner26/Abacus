@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -36,6 +37,7 @@ module.exports = function(app) {
     })
       .then(function() {
         console.log("---------------------redirecting-----------------------");
+        console.log(db.User);
         res.redirect(307, "/api/signin");
       })
       // .catch(function(err) {
@@ -44,15 +46,16 @@ module.exports = function(app) {
   });
 
   // Route for logging user out
-  app.get("/logout", function(req, res) {
+  app.get("/logout", isAuthenticated, function(req, res) {
     req.logout();
     res.redirect("/");
   });
 
   // Route for getting some data about our user to be used client side
-  app.get("/api/user_data", function(req, res) {
+  app.get("/api/user_data", isAuthenticated, function(req, res) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
+      // isAuthenticated();
       res.json({});
     } else {
       // Otherwise send back the user's email and id
@@ -63,4 +66,23 @@ module.exports = function(app) {
       });
     }
   });
+
+  app.post("/api/createAssignment", function(req, res) {
+    console.log("---------------------------------------created assignment--------------------------------------------");
+    db.Assignment.create({
+      title: req.body.title,
+      description: req.body.description,
+      assign_date: req.body.assign_date,
+      due_date: req.body.due_date,
+      subject: req.body.subject
+    })
+      // .then(function() {
+      //   console.log("---------------------redirecting-----------------------");
+      //   res.redirect(307, "");
+      // })
+      // .catch(function(err) {
+      //   res.status(401).json(err);
+      // });
+  });
+
 };
