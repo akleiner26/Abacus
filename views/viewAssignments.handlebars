@@ -2,13 +2,13 @@
   <h1 class="col-12 assignHead">Assignments</h1>
 </section>
 
-<section class="row">
-<section class="containter offset-2 col-8">
+<section class="row assignRow">
+<section class="container offset-2 col-8">
+  {{#each Assignments}}
   <div class="card">
-    {{#each Assignments}}
+    <section class="eachCard">
     <div class="card-header">
-
-      {{this.title}}
+      <strong>{{this.title}}</strong>
     </div>
     <div class="card-body">
       <h5 class="card-title">
@@ -17,9 +17,10 @@
       <p class="card-text">
         {{this.description}}
       </p>
-      <button class="btn btn-primary">View Grades</button>
-      {{/each}}
+      <button href="/"class="btn btn-primary">View Grades</button>
     </div>
+    </section>
   </div>
+       {{/each}}
 </section>
 </section>
