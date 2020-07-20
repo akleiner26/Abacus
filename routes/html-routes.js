@@ -47,9 +47,11 @@ module.exports = function (app) {
     //assuming we use a grades table
     res.render("grades");
   });
+  
   app.get("/assignments/:assignment", isAuthenticated, function (req, res) {
     res.render("soloAssignment");
   });
+
   app.get("*", function (req, res) {
     res.render("index");
   });
