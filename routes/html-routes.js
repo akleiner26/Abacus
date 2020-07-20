@@ -13,7 +13,7 @@ module.exports = function (app) {
     res.render("signin");
   });
 
-  app.get("/userportal", function (req, res) {
+  app.get("/userportal", isAuthenticated, function (req, res) {
 //Currently shows the user portal but without login authentication 
     res.render("index");
   });
