@@ -1,0 +1,26 @@
+{{!-- Insert navbar --}}
+
+<div class='container'>
+    <div class='row'>
+        <a href="#">View All Assignments</a>
+    </div>
+    <div class='row'>
+        
+        {{!-- List of assignments/grades by student --}}
+        <div class='col-12'>
+            <div class="card">
+                <ul class='text-sm-left list-group list-group-flush'>
+                    {{#each Users}}
+                    {{!-- {{#unless Teacher}} --}}
+                    {{!-- We might need to change user_type to 'teacher' in workbench/model and use booleans to set true or false for this #unless portion --}}
+                    <li class='list-group-item'>{{this.id}}</li>
+                    {{!-- {{/unless}} --}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+ <script type="text/javascript" src="js/viewByStudents.js"></script>
