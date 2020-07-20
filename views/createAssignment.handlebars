@@ -1,0 +1,55 @@
+{{!-- NOTES --}}
+{{!-- Look into error msg -- not sure how it exactly works --}}
+{{!-- Check/test link to signin at bottom of page --}}
+
+<!-- Insert navbar -->
+
+<div class="container">
+
+    {{!-- Abacus animation --}}
+    <center>
+        <div class='abacus'>
+            <div class='left'></div>
+            <div class='right'></div>
+            <div class='bar bar1'></div>
+            <div class='bar bar2'></div>
+            <div class='bar bar3'></div>
+            <div class='block red1'></div>
+            <div class='block red2'></div>
+            <div class='block blue1'></div>
+            <div class='block blue2'></div>
+            <div class='block purple1'></div>
+            <div class='block purple2'></div>
+            <div class='block yellow1'></div>
+            <div class='block yellow2'></div>
+        </div>
+    </center>
+
+    <h2 class="text-center">Create an Assignment!</h2>
+
+    <div class="row p-5">
+        <div class="col-12">
+
+            
+            <form class="newAssign">
+
+                {{!-- Title --}}
+                <div class="form-group">
+                    <label for="inputTitle">Title</label>
+                    <input type="text" class="form-control" id="title" placeholder="Title">
+                </div>
+                {{!-- Description --}}
+                <div class="form-group">
+                    <label for="inputDescription">Description</label>
+                    <input type="text" class="form-control" id="description" placeholder="Description">
+                </div>
+                {{!-- Error message --}}
+                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span> <span class="msg"></span>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
