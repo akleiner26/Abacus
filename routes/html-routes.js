@@ -9,7 +9,7 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function (app) {
 
   // Sign in page
-  app.get("/signin", function (req, res) {
+  app.get("/", function (req, res) {
     res.render("signin");
   });
  app.get("/createAssignment", function (req, res) {
@@ -18,7 +18,7 @@ module.exports = function (app) {
   });
   // View by students page 
   app.get("/students", isAuthenticated, function (req, res) {
-    db.User.findAll({ raw: true })
+    db.Teacher.findAll({ raw: true })
       .then(function (userData) {
 
         console.log(userData);
@@ -52,13 +52,15 @@ module.exports = function (app) {
     //assuming we use a grades table
     res.render("grades");
   });
+
   app.get("*", function (req, res) {
-    res.render("createAccount");
+    res.render("index");
   });
 
   app.get("/assignments/:assignment", isAuthenticated, function (req, res) {
     res.render("soloAssignment");
   });
+
 
 
   // app.get("/", function (req, res) {
