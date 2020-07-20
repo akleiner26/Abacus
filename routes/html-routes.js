@@ -14,7 +14,7 @@ module.exports = function (app) {
   });
 
   // View by students page 
-  app.get("/students", function (req, res) {
+  app.get("/students", isAuthenticated, function (req, res) {
     db.User.findAll({})
       .then(function (studentData) {
 
@@ -31,11 +31,11 @@ module.exports = function (app) {
     //Currently shows the user portal but without login authentication 
     res.render("index");
   });
-  app.get("/assignments", function (req, res) {
+  app.get("/assignments", isAuthenticated, function (req, res) {
     //under the assumption we use one page to create and view assignments, otherwise need to split this into two
     res.render("assignments");
   });
-  app.get("/grades", function (req, res) {
+  app.get("/grades", isAuthenticated, function (req, res) {
     //assuming we use a grades table
     res.render("grades");
   });
@@ -43,7 +43,7 @@ module.exports = function (app) {
     res.render("createAccount");
   });
 
-  app.get("/assignments/:assignment", function (req, res) {
+  app.get("/assignments/:assignment", isAuthenticated, function (req, res) {
     res.render("soloAssignment");
   });
 

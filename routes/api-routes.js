@@ -11,7 +11,7 @@ module.exports = function(app) {
     res.json(req.user);
   });
 
-  app.get("/api/students", function(req, res) {
+  app.get("/api/students", isAuthenticated, function(req, res) {
     db.User.findAll({})
       .then(function(studentData) {
         res.json(studentData);
