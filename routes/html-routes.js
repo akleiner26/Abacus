@@ -12,7 +12,10 @@ module.exports = function (app) {
   app.get("/signin", function (req, res) {
     res.render("signin");
   });
-
+ app.get("/createAssignment", function (req, res) {
+    //assuming we use a grades table
+    res.render("createAssignment");
+  });
   // View by students page 
   app.get("/students", isAuthenticated, function (req, res) {
     db.User.findAll({ raw: true })
