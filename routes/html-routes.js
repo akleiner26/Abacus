@@ -15,14 +15,24 @@ module.exports = function (app) {
 
   // View by students page 
   app.get("/students", isAuthenticated, function (req, res) {
-    db.User.findAll({})
-      .then(function (studentData) {
+    db.User.findAll({ raw: true })
+      .then(function (userData) {
 
-        console.log(studentData);
+        console.log(userData);
+
+
+        // for (let i=0; i < userData.length; i++) {
+
+//           let studentData = {
+//             students: userData[0].dataValues
+//           }
+
+//         // }
+// console.log(studentData);
 
         // Create JSON with data from terminal and pass through in res.render
 
-        res.render("viewByStudents", { Users: studentData });
+        res.render("viewByStudents", {students: userData});
       });
   });
 
@@ -47,7 +57,7 @@ module.exports = function (app) {
     res.render("soloAssignment");
   });
 
-  
+
   // app.get("/", function (req, res) {
   //   // If the user already has an account send them to the members page
   //   if (req.user) {
