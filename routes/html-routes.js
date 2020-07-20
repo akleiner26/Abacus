@@ -12,30 +12,17 @@ module.exports = function (app) {
   app.get("/", function (req, res) {
     res.render("signin");
   });
- app.get("/createAssignment", function (req, res) {
+  app.get("/createAssignment", function (req, res) {
     //assuming we use a grades table
     res.render("createAssignment");
   });
   // View by students page 
   app.get("/students", isAuthenticated, function (req, res) {
-    db.Teacher.findAll({ raw: true })
+    db.Student.findAll({ raw: true })
       .then(function (userData) {
+        // console.log(userData);
 
-        console.log(userData);
-
-
-        // for (let i=0; i < userData.length; i++) {
-
-//           let studentData = {
-//             students: userData[0].dataValues
-//           }
-
-//         // }
-// console.log(studentData);
-
-        // Create JSON with data from terminal and pass through in res.render
-
-        res.render("viewByStudents", {students: userData});
+        res.render("viewByStudents", { students: userData });
       });
   });
 
@@ -53,7 +40,7 @@ module.exports = function (app) {
 
         // Create JSON with data from terminal and pass through in res.render
 
-        res.render("viewAssignments", {Assignments: assignmentData});
+        res.render("viewAssignments", { Assignments: assignmentData });
       });
   });
   app.get("/grades", isAuthenticated, function (req, res) {
@@ -63,31 +50,7 @@ module.exports = function (app) {
   app.get("/assignments/:assignment", isAuthenticated, function (req, res) {
     res.render("soloAssignment");
   });
-   app.get("*", function (req, res) {
+  app.get("*", function (req, res) {
     res.render("index");
   });
-
-
-  // app.get("/", function (req, res) {
-  //   // If the user already has an account send them to the members page
-  //   if (req.user) {
-  //     res.redirect("/homepage");
-  //   }
-  //   res.sendFile(path.join(__dirname, "../public/views/index.handlebars"));
-  // });
-
-  // app.get("/login", function (req, res) {
-  //   // If the user already has an account send them to the members page
-  //   if (req.user) {
-  //     res.redirect("/homepage");
-  //   }
-  //   res.sendFile(path.join(__dirname, "../public/views/signin.handlebars"));
-  // });
-
-  // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  // app.get("/homepage", isAuthenticated, function (req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/views/index.handlebars"));
-  // });
-
 };

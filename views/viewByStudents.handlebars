@@ -1,26 +1,31 @@
 {{!-- Insert navbar --}}
 
 <div class='container'>
-    <div class='row'>
-        <a href="#">View All Assignments</a>
-    </div>
-    <div class='row'>
-        
-        {{!-- List of assignments/grades by student --}}
-        <div class='col-12'>
-            <div class="card">
-                <ul class='text-sm-left list-group list-group-flush'>
-                    {{#each students}}
-                    {{!-- {{#unless Teacher}} --}}
-                    {{!-- We might need to change user_type to 'teacher' in workbench/model and use booleans to set true or false for this #unless portion --}}
-                    <li class='list-group-item'>{{this.first_name}}</li>
-                    {{!-- {{/unless}} --}}
-                    {{/each}}
-                </ul>
-            </div>
-        </div>
+    <a href="/assignments">View Assignments</a>
 
-    </div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Student Name</th>
+
+                {{!-- We need to figure out how to populate these from the data that's currently in workbench --}}
+                <th scope="col">Assignment 1</th>
+                <th scope="col">Assignment 2</th>
+                <th scope="col">Assignment 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each students}}
+            <tr>
+                <th scope="row">{{this.first_name}} {{this.last_name}}</th>
+
+                {{!-- Need to somehow associate grades and pull them in with handlebars intot he <td> tags --}}
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
 </div>
-
- {{!-- <script type="text/javascript" src="js/viewByStudents.js"></script> --}}
