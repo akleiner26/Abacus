@@ -51,4 +51,23 @@ module.exports = function(app) {
       });
     }
   });
+
+  app.post("/api/createAssignment", function(req, res) {
+    console.log("---------------------------------------created assignment--------------------------------------------");
+    db.Assignment.create({
+      title: req.body.title,
+      description: req.body.description,
+      assign_date: req.body.assign_date,
+      due_date: req.body.due_date,
+      subject: req.body.subject
+    })
+      // .then(function() {
+      //   console.log("---------------------redirecting-----------------------");
+      //   res.redirect(307, "");
+      // })
+      // .catch(function(err) {
+      //   res.status(401).json(err);
+      // });
+  });
+
 };
