@@ -1,21 +1,26 @@
-<h1 class="row assignHead">Assignments</h1>
+<section class="row">
+  <h1 class="col-12 assignHead">Assignments</h1>
+</section>
 
-<section class="containter">
-    <div class="card">
+<section class="row assignRow">
+<section class="container offset-2 col-8">
   {{#each Assignments}}
-  <div class="card-header">
-    
-    {{this.title}} 
+  <div class="card">
+    <section class="eachCard">
+    <div class="card-header">
+      <strong>{{this.title}}</strong>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">
+        {{this.subject}}
+      </h5>
+      <p class="card-text">
+        {{this.description}}
+      </p>
+      <button href="/"class="btn btn-primary">View Grades</button>
+    </div>
+    </section>
   </div>
-  <div class="card-body">
-    <h5 class="card-title">  
-      {{this.subject}}
-    </h5>
-    <p class="card-text">
-      {{this.description}}
-    </p>
-    <button class="btn btn-primary">View Grades</button>
-     {{/each}}
-  </div>
-</div>
+       {{/each}}
+</section>
 </section>

@@ -57,6 +57,7 @@ module.exports = function (app) {
     res.render("grades");
   });
 
+  
   app.get("/assignments/:assignment", isAuthenticated, function (req, res) {
     res.render("soloAssignment");
   });
