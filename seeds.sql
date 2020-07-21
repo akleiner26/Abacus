@@ -3,8 +3,8 @@ INSERT INTO teachers (first_name, last_name, email, password, createdAt, updated
 INSERT INTO students (first_name, last_name, teacherId, createdAt, updatedAt) 
 VALUES ("Studenthy", "Studentson", 1, "2020-07-20 00:00:00", "2020-07-20 00:00:00"),
 ("Andrew", "Kleiner", 1, "2020-07-20 00:00:00", "2020-07-20 00:00:00"),
-("Tim", "Winters", 2, "2020-07-20 00:00:00", "2020-07-20 00:00:00"),
-("Esther", "Min", 2, "2020-07-20 00:00:00", "2020-07-20 00:00:00");
+("Tim", "Winters", 1, "2020-07-20 00:00:00", "2020-07-20 00:00:00"),
+("Esther", "Min", 1, "2020-07-20 00:00:00", "2020-07-20 00:00:00");
  
 INSERT INTO assignments (title, description, assignment_date, due_date, subject, createdAt, updatedAt) 
 VALUES ("Assignment 1", "This is the first assignment of the year!", "2020-07-20", "0000-01-01", "Math", "2020-07-20 00:00:00", "2020-07-20 00:00:00"),

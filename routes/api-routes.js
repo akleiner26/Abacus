@@ -94,6 +94,17 @@ module.exports = function(app) {
       });
       console.log("--------------------------");
   });
+  // to get a single assignment
+  app.get("/api/assignment/:id", function(req, res) {
+    // Here we add an "include" property to our options in our findOne query
+    db.Assignment.findOne({
+      where: {
+        id: req.params.id
+      },
+    }).then(function(dbAssignment) {
+      res.json(dbAssignment);
+    });
+  });
   app.post("/api/createAssignment", function(req, res) {
     console.log("---------------------------------------created assignment--------------------------------------------");
     db.Assignment.create({
