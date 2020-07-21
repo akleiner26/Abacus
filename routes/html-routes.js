@@ -123,6 +123,7 @@ module.exports = function (app) {
               }
 
 
+             
             // console.log(studentData);
 
             res.render("viewByStudents", { students: studentData, assignments: assignmentData });
