@@ -1,6 +1,6 @@
 
-// Creating our Grade model
 
+var Grade = require("./grades")
 
 //This hard coded model will hopefully be replaced by a smaller model that we can add columns too depending on the assignments table.
 module.exports = function(sequelize, DataTypes) {
@@ -8,9 +8,9 @@ module.exports = function(sequelize, DataTypes) {
     Eleve = sequelize.define('Eleve', {});
     
     Eleve.associate = function(models) {
-        Eleve.belongsToMany(models.Assign, { through: models.Grades });    
-
+        Eleve.belongsToMany(models.Assign, { through: Grade });
     }
+        
     
       return Eleve;
     };

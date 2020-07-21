@@ -1,4 +1,6 @@
 
+
+
 // Creating our Assignment model
 module.exports = function(sequelize, DataTypes) {
   var Assignment = sequelize.define("Assignment", {
@@ -30,11 +32,11 @@ module.exports = function(sequelize, DataTypes) {
 
   });
 
-  Assignment.associate = function(models) {
-    Assignment.hasMany(models.assign, {
-        onDelete: "cascade"
-      });
-  };
+  // Assignment.associate = function(models) {
+  //   Assignment.hasMany(models.assign, {
+  //       onDelete: "cascade"
+  //     });
+  // };
 
   return Assignment;
 };
