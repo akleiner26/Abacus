@@ -35,9 +35,9 @@ $(document).ready(function () {
 				.then(function () {
 					window.location.replace("/userportal");
 				})
-				.catch(function (err) {
-					console.log(err);
-				});
+				// .catch(function (err) {
+				// 	console.log(err);
+				// });
 		}
 	});
 });

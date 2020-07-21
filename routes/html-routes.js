@@ -7,20 +7,17 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // Routes for handlebars
 module.exports = function (app) {
-app.get("/", function(req, res) {
-  res.render("signin")
-})
+  app.get("/", function(req, res) {
+    res.render("signin")
+  });
   // Sign in page
-<<<<<<< HEAD
-  app.get("/signin", function (req, res) {
-=======
+
   app.get("/create-account", function (req, res) {
     res.render("createAccount");
   });
 
   // Sign in page
-  app.get("/", function (req, res) {
->>>>>>> b7e7bccfd77ed366d33be1dfa295dd87cddbd80a
+  app.get("/signin", function (req, res) {
     res.render("signin");
   });
 
