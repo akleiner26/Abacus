@@ -3,23 +3,17 @@
 <div class='container'>
     {{!-- Buttons --}}
     <a href="/assignments" class="btn">View Assignments</a>
+    <button id="myBtn" class="btn">+ Add Student</button>
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-        + Add Student
-    </button>
-{{!-- 
-    {{!-- Modal --}}
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Enter New Student Information</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+    <!-- Modal for form to add a student -->
+    <div id="myModal" class="modal">
 
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Enter Student Information</h3>
+            </div>
+            <div class="modal-body">
                 {{!-- Form to add new student --}}
                 <form class="newAssign modal-body">
 
@@ -39,15 +33,15 @@
                         <label for="inputTeacherId">Teacher ID</label>
                         <input type="text" class="form-control" id="teacherId-input" placeholder="Teacher ID">
                     </div>
+                    <center>
+                        <button type="submit" id="addStudentBtn" class="btn">Save</button>
+                        <button id="closeBtn" class="btn">Close</button>
+                    </center>
                 </form>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn">Save</button>
-                </div>
             </div>
         </div>
-    </div> --}}
+
+    </div>
 
     {{!-- Table with student data --}}
     <table class="table table-hover">
@@ -75,4 +69,4 @@
         </tbody>
     </table>
 </div>
-{{!-- <script type="text/javascript" src="js/createStudent.js"></script> --}}
+<script type="text/javascript" src="js/createStudent.js"></script>
