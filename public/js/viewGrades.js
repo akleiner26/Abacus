@@ -1,13 +1,13 @@
 $(document).ready(function () {
-    let viewGradesBtns = $(".viewGradesBtns");
+    let viewGradesBtn = $(".viewGradesBtn");
 
 
     // Shows modal when "+ Add Student" button is clicked
-    viewGradesBtns.on("click", function () {
+    viewGradesBtn.on("click", function () {
         console.log($(this).attr("data-id"));
         
         let id = $(this).attr("data-id");
-
+        window.location.href="/assignments/" +id
     })
 
     // function handleAssignUpdate() {

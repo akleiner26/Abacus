@@ -41,10 +41,12 @@ module.exports = function (app) {
   });
 
   //Get single assignment
-  app.get("/assignments/:assignment", isAuthenticated, function (req, res) {
-    db.Assignment.findAll({ raw: true })
+  app.get("/assignments/:id", isAuthenticated, function (req, res) {
+    db.Assignment.findOne({ raw: true, where: {id: req.params.id}, include: [db.Student] 
+    }).then (function (assignmentData){
+      res.render("soloAssignment", assignmentData);
+    })
    
-    res.render("soloAssignment");
   });
 
   // View by students page 
@@ -119,6 +121,7 @@ module.exports = function (app) {
                     }
                   
               }
+
 
              
             // console.log(studentData);
