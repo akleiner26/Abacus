@@ -7,8 +7,6 @@ module.exports = function(sequelize, DataTypes) {
   // This is a work around to create composite primary key.
   
   Grade = sequelize.define('Grade', {
-      student_Id: DataTypes.INTEGER,
-      assignment_Id: DataTypes.INTEGER,
       gradeVal: DataTypes.INTEGER
 
   });
