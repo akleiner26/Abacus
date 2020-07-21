@@ -7,47 +7,31 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // Routes for handlebars
 module.exports = function (app) {
+  
+// Sign in page
   app.get("/", function(req, res) {
-    res.render("signin")
+      res.render("signin")
+    });
+  app.get("/signin", function (req, res) {
+    res.render("signin");
   });
-
+//Create Account
   app.get("/create-account", function (req, res) {
     res.render("createAccount");
   });
 
-  // Sign in page
-  app.get("/", function (req, res) {
-  app.get("/signin", function (req, res) {
-    res.render("signin");
-  });
-
+  
+//Create Assignment
   app.get("/createAssignment", function (req, res) {
-    //assuming we use a grades table
     res.render("createAssignment");
   });
-
-  // View by students page 
-  app.get("/students", isAuthenticated, function (req, res) {
-    db.Student.findAll({ raw: true })
-      .then(function (userData) {
-        // console.log(userData);
-
-        res.render("viewByStudents", { students: userData });
-      });
+  //Get single assignment
+  app.get("/assignments/:assignment", isAuthenticated, function (req, res) {
+    res.render("soloAssignment");
   });
-
-  // Sets the "homepage" as create an account. I suspect we may want to make a true homepage that gives user options.
-  app.get("/createAccount", function (req, res) {
-    //Currently shows the user portal but without login authentication 
-    res.render("createAccount");
-  });
-  app.get("/userportal", isAuthenticated, function (req, res) {
-    //Currently shows the user portal but without login authentication 
-    res.render("index");
-  });
-
+  //Get all assigments
   app.get("/assignments", function (req, res) {
-    //under the assumption we use one page to create and view assignments, otherwise need to split this into two
+    
     db.Assignment.findAll({ raw: true })
       .then(function (assignmentData) {
 
@@ -59,16 +43,35 @@ module.exports = function (app) {
       });
   });
 
+
+
+// View by students page 
+  app.get("/students", isAuthenticated, function (req, res) {
+    db.Student.findAll({ raw: true })
+      .then(function (userData) {
+        // console.log(userData);
+
+        res.render("viewByStudents", { students: userData });
+      });
+  });
+
+  // Create Account
+  app.get("/createAccount", function (req, res) {
+    
+    res.render("createAccount");
+  });
+  //Teacher Portal
+  app.get("/userportal", isAuthenticated, function (req, res) {
+    
+    res.render("index");
+  });
+
+//Grades
   app.get("/grades", isAuthenticated, function (req, res) {
-    //assuming we use a grades table
     res.render("grades");
   });
 
-  
-  app.get("/assignments/:assignment", isAuthenticated, function (req, res) {
-    res.render("soloAssignment");
-  });
-
+//Catch all
   app.get("*", function (req, res) {
     res.render("index");
   });

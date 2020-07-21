@@ -22,10 +22,10 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true
       }
     },
-    teacher_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
+    // teacher_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false
+    // },
     
     password: {
       type: DataTypes.STRING,
@@ -36,9 +36,6 @@ module.exports = function(sequelize, DataTypes) {
 
 //how to assign a reflexive foreign key.
 
-  Student.associate = function(model) {
-    Student.belongsTo(model.Teacher, {as: "role"})
-  };
   Student.associate = function(models) {
     Student.hasMany(models.Grade)
   };
