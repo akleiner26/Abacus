@@ -5,12 +5,10 @@ $(document).ready(function () {
     let firstNameInput = $("input#first-name-input");
 	let lastNameInput = $("input#last-name-input");
 	let teacherIdInput = $("input#teacher-id-input");
-
     // Shows modal when "+ Add Student" button is clicked
     addBtn.on("click", function () {
         modal.css("display", "block");
     })
-
     $(window).on("click", function (event) {
         if (event.target == modal) {
             modal.css("display", "none");
@@ -25,27 +23,26 @@ $(document).ready(function () {
         let newStudent = {
             first_name: firstNameInput.val().trim(),
 			last_name: lastNameInput.val().trim(),
-			teacher_id: teacherIdInput.val().trim()
+			teacherId: teacherIdInput.val().trim()
         }
 
         console.log(newStudent);
 
-        if (!newStudent.first_name || !newStudent.last_name || !newStudent.teacher_id) {
+        if (!newStudent.first_name || !newStudent.last_name || !newStudent.teacherId) {
 			return;
         }
         
         // Run function addStudent if fields are valid
-		addStudent(newStudent.first_name, newStudent.last_name, newStudent.teacher_id);
+		addStudent(newStudent.first_name, newStudent.last_name, newStudent.teacherId);
 		firstNameInput.val("");
 		lastNameInput.val("");
 		teacherIdInput.val("");
-
 		// // Does a post to the createStudent route and redirects to students if successful
-		function addStudent(first_name, last_name, teacher_id) {
+		function addStudent(first_name, last_name, teacherId) {
 			$.post("/api/createStudent", {
 				first_name: first_name,
 				last_name: last_name,
-				teacher_id: teacher_id
+				teacherId: teacherId
 			})
 				.then(function (data) {
                     // window.location.replace("/students");
