@@ -10,10 +10,23 @@ $(document).ready(function () {
 	let subject = $("input#newAssignSubject");
 	let addAssign = $("#addAssign");
 	let modal = $("#myModal");
+	let deleteBtn = $(".del-btn");
 	
 	addAssign.on("click", function () {
         modal.css("display", "block");
-    })
+	})
+	
+	deleteBtn.on("click", function(){
+		let id = $(this).attr("data-id");
+		console.log(id);
+		$.ajax("/api/assignments/" + id, {
+			type: "DELETE"
+		}).then (function(id){
+			console.log(`Deleted Assignment with ID = ${id}`)
+			location.reload();
+		})
+	})
+
 	
 	// Validates that email and password fields are not blank when 'create account' button is clicked
 	newAssignForm.on("submit", function (event) {
