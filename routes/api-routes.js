@@ -112,6 +112,18 @@ module.exports = function(app) {
       // });
   });
 
+  app.put("/api/assignments", function(req, res) {
+    db.Assignment.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function(dbAssignment) {
+      res.json(dbAssignment);
+    });
+  });
+
   app.delete("/api/assignments/:id", function(req, res) {
     db.Assignment.destroy({
       where: {
