@@ -1,12 +1,16 @@
 // NOTES
 // Look into bootstrap error at bottom of code -- not sure exactly how it works
-// Check post route with api-routes.js
-
+// Check post route with api-routes.j
 $(document).ready(function () {
 	let newAssignForm = $("form.newAssign");
 	let titleInput = $("input#title");
 	let description = $("input#description");
-
+	let addAssign = $("#addAssign");
+	let modal = $("#myModal");
+	
+	addAssign.on("click", function () {
+        modal.css("display", "block");
+    })
 	
 	// Validates that email and password fields are not blank when 'create account' button is clicked
 	newAssignForm.on("submit", function (event) {
