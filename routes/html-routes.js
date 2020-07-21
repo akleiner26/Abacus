@@ -32,7 +32,7 @@ module.exports = function (app) {
     db.Assignment.findAll({ raw: true })
       .then(function (assignmentData) {
 
-        console.log(assignmentData);
+        // console.log(assignmentData);
 
         // Create JSON with data from terminal and pass through in res.render
 
@@ -64,7 +64,7 @@ module.exports = function (app) {
           }
         })
           .then(function (userData) {
-            console.log(userData);
+            // console.log(userData);
 
             let studentData = [];
             let studentObj = {};
@@ -78,18 +78,18 @@ module.exports = function (app) {
                 while (assignmentId < assignmentData.length) {
                   studentObj.grades.push(null);
                   assignmentId++;
-                  console.log(`New assignment ID is ${assignmentId}`)
+                  // console.log(`New assignment ID is ${assignmentId}`)
                 }
                 studentData.push(studentObj);
               } else {
 
                 if (studentId !== userData[i].id) {
                   if (i > 0) {
-                    console.log(`Current assignment ID is ${assignmentId}`)
+                    // console.log(`Current assignment ID is ${assignmentId}`)
                     while (assignmentId < assignmentData.length) {
                       studentObj.grades.push(null);
                       assignmentId++;
-                      console.log(`New assignment ID is ${assignmentId}`)
+                      // console.log(`New assignment ID is ${assignmentId}`)
                     }
 
                     studentData.push(studentObj)
@@ -113,9 +113,15 @@ module.exports = function (app) {
                   studentObj.grades.push(userData[i]['Grades.gradeVal']);
                 }
 
+                      // console.log(`Reassigned assignment ID is ${assignmentId}`)
+  
+                      studentObj.grades.push(userData[i]['Grades.gradeVal']);
+                    }
+                  
               }
 
-            } console.log(studentData);
+            } 
+            // console.log(studentData);
 
             res.render("viewByStudents", { students: studentData, assignments: assignmentData });
             // });
