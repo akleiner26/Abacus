@@ -14,18 +14,24 @@ $(document).ready(function () {
             modal.css("display", "none");
         }
     })
+
    saveBtn.on("click", function (event) {
         event.preventDefault();
+        
         // console.log("clicked");
+
         let newStudent = {
             first_name: firstNameInput.val().trim(),
 			last_name: lastNameInput.val().trim(),
 			teacher_id: teacherIdInput.val().trim()
         }
+
         console.log(newStudent);
+
         if (!newStudent.first_name || !newStudent.last_name || !newStudent.teacher_id) {
 			return;
         }
+        
         // Run function addStudent if fields are valid
 		addStudent(newStudent.first_name, newStudent.last_name, newStudent.teacher_id);
 		firstNameInput.val("");
