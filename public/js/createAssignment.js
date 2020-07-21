@@ -3,8 +3,11 @@
 // Check post route with api-routes.j
 $(document).ready(function () {
 	let newAssignForm = $("form.newAssign");
-	let titleInput = $("input#title");
-	let description = $("input#description");
+	let titleInput = $("input#newAssignName");
+	let description = $("input#newAssignDescrip");
+	let assignDate = $("input#newAssignDate");
+	let dueDate = $("input#newAssignDue");
+	let subject = $("input#newAssignSubject");
 	let addAssign = $("#addAssign");
 	let modal = $("#myModal");
 	
@@ -17,44 +20,33 @@ $(document).ready(function () {
 		event.preventDefault();
 		console.log("--------------submitted---------------");
 
-
-		console.log(userTypeInput.val());
-		let userData = {
-			first_name: titleInput.val().trim(),
-			last_name: description.val().trim(),
-			user_type: userTypeInput.val(),
-			email: emailInput.val().trim(),
-			// Teacher ID should be added as a condition if the user is a student. We should also probably have it take in the teacher's name but then save it as the teacher id into workbench
-			// teacher_id: teacherIdInput.val().trim(),
-			password: passwordInput.val().trim()
+		let assignData = {
+			title: titleInput.val().trim(),
+			description: description.val().trim(),
+			assignment_date: assignDate.val().trim(),
+			due_date: dueDate.val().trim(),
+			subject: subject.val().trim(),
 		};
 
-		console.log(userData);
+		console.log(assignData);
 
-		if (!userData.email || !userData.password) {
-			return;
-		}
-		// Run function registerUser if email and password are valid
-		registerUser(userData.first_name, userData.last_name, userData.user_type, userData.email, userData.password);
+		createAssign(assignData.title, assignData.description, assignData.assignment_date, assignData.due_date, assignData.subject)
 		titleInput.val("");
 		description.val("");
-		userTypeInput.val("");
-		emailInput.val("");
-		passwordInput.val("");
+		assignDate.val("");
+		dueDate.val("");
+		subject.val("");
 
-		
-
-		// // Does a post to the register route and redirects to homepage (index) if successful
-		function registerUser(first_name, last_name, user_type, email, password) {
-			$.post("/api/createAccount", {
-				first_name: first_name,
-				last_name: last_name,
-				user_type: user_type,
-				email: email,
-				password: password
+		function createAssign(title, description, assignment_date, due_date, subject) {
+			$.post("/api/createAssignment", {
+				title: title,
+				description: description,
+				assignment_date: assignment_date,
+				due_date: due_date,
+				subject: subject
 			})
 				.then(function (data) {
-					window.location.replace("/userportal");
+					window.location.replace("/assignments");
 					// Throws up bootstrap alert if there is an error
 				})
 				//for some reason this was causing an error. then.catch is not a function
