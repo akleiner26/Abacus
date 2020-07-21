@@ -7,25 +7,45 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // Routes for handlebars
 module.exports = function (app) {
-  app.get("/", function (req, res) {
-    res.render("signin")
+  
+// Sign in page
+  app.get("/", function(req, res) {
+      res.render("signin")
+    });
+  app.get("/signin", function (req, res) {
+    res.render("signin");
   });
-
+//Create Account
   app.get("/create-account", function (req, res) {
     res.render("createAccount");
   });
 
-  // Sign in page
-  app.get("/signin", function (req, res) {
-    res.render("signin");
-  });
-
+  
+//Create Assignment
   app.get("/createAssignment", function (req, res) {
-    //assuming we use a grades table
     res.render("createAssignment");
   });
+  //Get single assignment
+  app.get("/assignments/:assignment", isAuthenticated, function (req, res) {
+    res.render("soloAssignment");
+  });
+  //Get all assigments
+  app.get("/assignments", function (req, res) {
+    
+    db.Assignment.findAll({ raw: true })
+      .then(function (assignmentData) {
 
-  // View by students page 
+        console.log(assignmentData);
+
+        // Create JSON with data from terminal and pass through in res.render
+
+        res.render("viewAssignments", { Assignments: assignmentData });
+      });
+  });
+
+
+
+// View by students page 
   app.get("/students", isAuthenticated, function (req, res) {
 
     db.Assignment.findAll({ raw: true })
@@ -95,39 +115,23 @@ module.exports = function (app) {
       })
   });
 
-  // Sets the "homepage" as create an account. I suspect we may want to make a true homepage that gives user options.
+  // Create Account
   app.get("/createAccount", function (req, res) {
-    //Currently shows the user portal but without login authentication 
+    
     res.render("createAccount");
   });
+  //Teacher Portal
   app.get("/userportal", isAuthenticated, function (req, res) {
-    //Currently shows the user portal but without login authentication 
+    
     res.render("index");
   });
 
-  app.get("/assignments", function (req, res) {
-    //under the assumption we use one page to create and view assignments, otherwise need to split this into two
-    db.Assignment.findAll({ raw: true })
-      .then(function (assignmentData) {
-
-        console.log(assignmentData);
-
-        // Create JSON with data from terminal and pass through in res.render
-
-        res.render("viewAssignments", { Assignments: assignmentData });
-      });
-  });
-
+//Grades
   app.get("/grades", isAuthenticated, function (req, res) {
-    //assuming we use a grades table
     res.render("grades");
   });
 
-
-  app.get("/assignments/:assignment", isAuthenticated, function (req, res) {
-    res.render("soloAssignment");
-  });
-
+//Catch all
   app.get("*", function (req, res) {
     res.render("index");
   });
