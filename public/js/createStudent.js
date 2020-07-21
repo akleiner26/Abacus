@@ -23,26 +23,26 @@ $(document).ready(function () {
         let newStudent = {
             first_name: firstNameInput.val().trim(),
 			last_name: lastNameInput.val().trim(),
-			teacherId: teacherIdInput.val().trim()
+			teacher_id: teacherIdInput.val().trim()
         }
 
         console.log(newStudent);
 
-        if (!newStudent.first_name || !newStudent.last_name || !newStudent.teacherId) {
+        if (!newStudent.first_name || !newStudent.last_name || !newStudent.teacher_id) {
 			return;
         }
         
         // Run function addStudent if fields are valid
-		addStudent(newStudent.first_name, newStudent.last_name, newStudent.teacherId);
+		addStudent(newStudent.first_name, newStudent.last_name, newStudent.teacher_id);
 		firstNameInput.val("");
 		lastNameInput.val("");
 		teacherIdInput.val("");
 		// // Does a post to the createStudent route and redirects to students if successful
-		function addStudent(first_name, last_name, teacherId) {
+		function addStudent(first_name, last_name, teacher_id) {
 			$.post("/api/createStudent", {
 				first_name: first_name,
 				last_name: last_name,
-				teacherId: teacherId
+				TeacherId: teacher_id
 			})
 				.then(function (data) {
                     // window.location.replace("/students");

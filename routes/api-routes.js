@@ -34,15 +34,17 @@ module.exports = function(app) {
 
   // Post request to add a student to database comes from createStudent.js
   app.post("/api/createStudent", function(req, res) {
+    console.log("--------------etudiant cree-----------------------");
+    console.log(req.body);
     db.Student.create({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
-      teacher_id: req.body.teacher_id
+      TeacherId: req.body.TeacherId
     })
-    // .then(function(data) {
-    //   console.log(data);
-    // })
-    // res.status(200).end();
+    .then(function(data) {
+      console.log(data);
+    })
+    res.status(200).end();
     res.redirect(307);
   });
 
@@ -108,6 +110,18 @@ module.exports = function(app) {
       // .catch(function(err) {
       //   res.status(401).json(err);
       // });
+  });
+
+  app.put("/api/assignments", function(req, res) {
+    db.Assignment.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function(dbAssignment) {
+      res.json(dbAssignment);
+    });
   });
 
   app.delete("/api/assignments/:id", function(req, res) {
