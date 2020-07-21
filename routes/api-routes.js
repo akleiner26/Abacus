@@ -99,10 +99,10 @@ module.exports = function(app) {
     db.Assignment.create({
       title: req.body.title,
       description: req.body.description,
-      assign_date: req.body.assign_date,
+      assignment_date: req.body.assignment_date,
       due_date: req.body.due_date,
       subject: req.body.subject
-    })
+    }).then (function (){res.end();})
       // .then(function() {
       //   console.log("---------------------redirecting-----------------------");
       //   res.redirect(307, "");
