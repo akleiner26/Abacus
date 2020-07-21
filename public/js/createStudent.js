@@ -1,38 +1,56 @@
 $(document).ready(function () {
-    // Get the modal
-    var modal = document.getElementById("myModal");
+    let modal = $("#myModal");
+    let addBtn = $("#addBtn");
+    let saveBtn = $("#saveBtn")
+    let firstNameInput = $("input#first-name-input");
+	let lastNameInput = $("input#last-name-input");
+	let teacherIdInput = $("input#teacher-id-input");
 
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
+    // Shows modal when "+ Add Student" button is clicked
+    addBtn.on("click", function () {
+        modal.css("display", "block");
+    })
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on the button, open the modal
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
+    $(window).on("click", function (event) {
         if (event.target == modal) {
-            modal.style.display = "none";
+            modal.css("display", "none");
         }
-    }
+    })
 
+   saveBtn.on("click", function (event) {
+        event.preventDefault();
+        
+        // console.log("clicked");
 
-    // let addStudentBtn = $("#addStudentBtn");
+        let newStudent = {
+            first_name: firstNameInput.val().trim(),
+			last_name: lastNameInput.val().trim(),
+			teacher_id: teacherIdInput.val().trim()
+        }
 
-    // $('#myModal').on('shown.bs.modal', function () {
-    //     $('#myInput').trigger('focus')
-    //   })
+        console.log(newStudent);
 
-    // addStudentBtn.on("click", function () {
-    //     console.log("clicked");
-    // })
+        if (!newStudent.first_name || !newStudent.last_name || !newStudent.teacher_id) {
+			return;
+        }
+        
+        // Run function addStudent if fields are valid
+		addStudent(newStudent.first_name, newStudent.last_name, newStudent.teacher_id);
+		firstNameInput.val("");
+		lastNameInput.val("");
+		teacherIdInput.val("");
+
+		// // Does a post to the createStudent route and redirects to students if successful
+		function addStudent(first_name, last_name, teacher_id) {
+			$.post("/api/createStudent", {
+				first_name: first_name,
+				last_name: last_name,
+				teacher_id: teacher_id
+			})
+				.then(function (data) {
+                    window.location.replace("/students");
+                    console.log("successfully saved!")
+				})
+		}
+    })
 });

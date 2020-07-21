@@ -52,6 +52,17 @@ module.exports = function(app) {
       // // });
   });
 
+  // Post request to add a student to database comes from createStudent.js
+  app.post("/api/createStudent", function(req, res) {
+    db.Student.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      teacher_id: req.body.teacher_id
+    })
+
+    res.redirect(307);
+  });
+
   // Route for logging user out
   app.get("/logout", isAuthenticated, function(req, res) {
     req.logout();

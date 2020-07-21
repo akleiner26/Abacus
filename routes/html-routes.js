@@ -7,7 +7,7 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // Routes for handlebars
 module.exports = function (app) {
-  app.get("/", function(req, res) {
+  app.get("/", function (req, res) {
     res.render("signin")
   });
 
@@ -32,6 +32,12 @@ module.exports = function (app) {
         // console.log(userData);
 
         res.render("viewByStudents", { students: userData });
+      });
+    db.Grade.findAll({ raw: true })
+      .then(function (gradeData) {
+        // console.log(gradeData);
+
+        res.render("viewByStudents", { grades: gradeData });
       });
   });
 
@@ -63,7 +69,7 @@ module.exports = function (app) {
     res.render("grades");
   });
 
-  
+
   app.get("/assignments/:assignment", isAuthenticated, function (req, res) {
     res.render("soloAssignment");
   });

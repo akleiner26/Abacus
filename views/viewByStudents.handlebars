@@ -3,7 +3,7 @@
 <div class='container'>
     {{!-- Buttons --}}
     <a href="/assignments" class="btn">View Assignments</a>
-    <button id="myBtn" class="btn">+ Add Student</button>
+    <button id="addBtn" class="btn">+ Add Student</button>
 
     <!-- Modal for form to add a student -->
     <div id="myModal" class="modal">
@@ -31,10 +31,10 @@
                     {{!-- Teacher Id --}}
                     <div class="form-group">
                         <label for="inputTeacherId">Teacher ID</label>
-                        <input type="text" class="form-control" id="teacherId-input" placeholder="Teacher ID">
+                        <input type="number" class="form-control" id="teacher-id-input" placeholder="Teacher ID">
                     </div>
                     <center>
-                        <button type="submit" id="addStudentBtn" class="btn">Save</button>
+                        <button type="submit" id="saveBtn" class="btn">Save</button>
                         <button id="closeBtn" class="btn">Close</button>
                     </center>
                 </form>
@@ -61,9 +61,10 @@
                 <th scope="row">{{this.first_name}} {{this.last_name}}</th>
 
                 {{!-- Need to somehow associate grades and pull them in with handlebars intot he <td> tags --}}
-                <td></td>
-                <td></td>
-                <td></td>
+                {{#each grades}}
+                <td>{{this.gradeVal}}</td>
+                {{!-- <td>{{}}</td> --}}
+                {{/each}}
             </tr>
             {{/each}}
         </tbody>
