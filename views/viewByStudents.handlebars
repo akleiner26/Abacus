@@ -2,7 +2,7 @@
 
 <div class='container'>
     {{!-- Buttons --}}
-    <a href="/assignments" class="btn">View Assignments</a>
+    <a href="/assignments" id="viewBtn" class="btn">View Assignments</a>
     <button id="addBtn" class="btn">+ Add Student</button>
 
     <!-- Modal for form to add a student -->
@@ -50,9 +50,9 @@
                 <th scope="col">Student Name</th>
 
                 {{!-- We need to figure out how to populate these from the data that's currently in workbench --}}
-                <th scope="col">Assignment 1</th>
-                <th scope="col">Assignment 2</th>
-                <th scope="col">Assignment 3</th>
+                {{#each assignments}}
+                <th scope="col">{{this.title}}</th>
+                {{/each}}
             </tr>
         </thead>
         <tbody>
@@ -60,11 +60,10 @@
             <tr>
                 <th scope="row">{{this.first_name}} {{this.last_name}}</th>
 
-                {{!-- Need to somehow associate grades and pull them in with handlebars intot he <td> tags --}}
-                {{#each grades}}
-                <td>{{this.gradeVal}}</td>
-                {{!-- <td>{{}}</td> --}}
+                {{#each this.grades}}
+                <td>{{this}}</td>
                 {{/each}}
+                
             </tr>
             {{/each}}
         </tbody>

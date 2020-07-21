@@ -48,7 +48,8 @@ $(document).ready(function () {
 				teacher_id: teacher_id
 			})
 				.then(function (data) {
-                    window.location.replace("/students");
+                    // window.location.replace("/students");
+                    window.location.href = "/students";
                     console.log("successfully saved!")
 				})
 		}
