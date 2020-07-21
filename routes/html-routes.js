@@ -11,13 +11,24 @@ app.get("/", function(req, res) {
   res.render("signin")
 })
   // Sign in page
+<<<<<<< HEAD
   app.get("/signin", function (req, res) {
+=======
+  app.get("/create-account", function (req, res) {
+    res.render("createAccount");
+  });
+
+  // Sign in page
+  app.get("/", function (req, res) {
+>>>>>>> b7e7bccfd77ed366d33be1dfa295dd87cddbd80a
     res.render("signin");
   });
+
   app.get("/createAssignment", function (req, res) {
     //assuming we use a grades table
     res.render("createAssignment");
   });
+
   // View by students page 
   app.get("/students", isAuthenticated, function (req, res) {
     db.Student.findAll({ raw: true })
@@ -37,6 +48,7 @@ app.get("/", function(req, res) {
     //Currently shows the user portal but without login authentication 
     res.render("index");
   });
+
   app.get("/assignments", function (req, res) {
     //under the assumption we use one page to create and view assignments, otherwise need to split this into two
     db.Assignment.findAll({ raw: true })
@@ -49,10 +61,12 @@ app.get("/", function(req, res) {
         res.render("viewAssignments", { Assignments: assignmentData });
       });
   });
+
   app.get("/grades", isAuthenticated, function (req, res) {
     //assuming we use a grades table
     res.render("grades");
   });
+
   
   app.get("/assignments/:assignment", isAuthenticated, function (req, res) {
     res.render("soloAssignment");
