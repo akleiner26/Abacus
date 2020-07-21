@@ -80,7 +80,7 @@ module.exports = function(app) {
     db.Student.create({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
-      teacherId: req.body.teacher_id,
+      teacherId: req.body.teacherId,
     })
   });
 

@@ -1,6 +1,6 @@
 INSERT INTO teachers (first_name, last_name, email, password, createdAt, updatedAt) VALUES ("Vince", "Gubitosi", "vince@email.com", "password1", "2020-07-20 00:00:00", "2020-07-20 00:00:00");
 
-INSERT INTO students (first_name, last_name, teacher_id, createdAt, updatedAt) 
+INSERT INTO students (first_name, last_name, teacherId, createdAt, updatedAt) 
 VALUES ("Studenthy", "Studentson", 1, "2020-07-20 00:00:00", "2020-07-20 00:00:00"),
 ("Andrew", "Kleiner", 1, "2020-07-20 00:00:00", "2020-07-20 00:00:00"),
 ("Tim", "Winters", 2, "2020-07-20 00:00:00", "2020-07-20 00:00:00"),
