@@ -10,13 +10,13 @@ module.exports = function (app) {
   app.get("/", function(req, res) {
     res.render("signin")
   });
-  // Sign in page
 
   app.get("/create-account", function (req, res) {
     res.render("createAccount");
   });
 
   // Sign in page
+  app.get("/", function (req, res) {
   app.get("/signin", function (req, res) {
     res.render("signin");
   });
