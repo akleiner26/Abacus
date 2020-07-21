@@ -7,7 +7,7 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // Routes for handlebars
 module.exports = function (app) {
-  app.get("/", function(req, res) {
+  app.get("/", function (req, res) {
     res.render("signin")
   });
 
@@ -16,7 +16,6 @@ module.exports = function (app) {
   });
 
   // Sign in page
-  app.get("/", function (req, res) {
   app.get("/signin", function (req, res) {
     res.render("signin");
   });
@@ -28,12 +27,72 @@ module.exports = function (app) {
 
   // View by students page 
   app.get("/students", isAuthenticated, function (req, res) {
-    db.Student.findAll({ raw: true })
-      .then(function (userData) {
-        // console.log(userData);
 
-        res.render("viewByStudents", { students: userData });
-      });
+    db.Assignment.findAll({ raw: true })
+      .then(function (assignmentData) {
+        // let assignmentCount = assignmentData.length;
+
+
+
+        db.Student.findAll({ raw: true, include: [db.Grade] })
+          .then(function (userData) {
+            console.log(userData);
+
+            let studentData = [];
+            let studentObj = {};
+            let studentId = 0;
+            let assignmentId = 0;
+
+            for (let i = 0; i <= userData.length; i++) {
+
+              // Pushes last student into student object
+              if (i === userData.length) {
+                while (assignmentId < assignmentData.length) {
+                  studentObj.grades.push(null);
+                  assignmentId++;
+                  console.log(`New assignment ID is ${assignmentId}`)
+                }
+                studentData.push(studentObj);
+              } else {
+
+                if (studentId !== userData[i].id) {
+                  if (i > 0) {
+                    console.log(`Current assignment ID is ${assignmentId}`)
+                    while (assignmentId < assignmentData.length) {
+                      studentObj.grades.push(null);
+                      assignmentId++;
+                      console.log(`New assignment ID is ${assignmentId}`)
+                    }
+  
+                    studentData.push(studentObj)
+                  };
+
+                  studentObj = {};
+                  assignmentId = 0;
+                  studentId = userData[i].id;
+                  studentObj.grades = [];
+
+                  studentObj.first_name = userData[i].first_name;
+                  studentObj.last_name = userData[i].last_name;
+                }
+
+                
+                    if (userData[i]['Grades.AssignmentId'] !== null) {
+                      assignmentId = userData[i]['Grades.AssignmentId'];
+
+                      console.log(`Reassigned assignment ID is ${assignmentId}`)
+  
+                      studentObj.grades.push(userData[i]['Grades.gradeVal']);
+                    }
+                  
+              }
+
+            } console.log(studentData);
+
+            res.render("viewByStudents", { students: studentData, assignments: assignmentData });
+            // });
+          });
+      })
   });
 
   // Sets the "homepage" as create an account. I suspect we may want to make a true homepage that gives user options.
@@ -64,7 +123,7 @@ module.exports = function (app) {
     res.render("grades");
   });
 
-  
+
   app.get("/assignments/:assignment", isAuthenticated, function (req, res) {
     res.render("soloAssignment");
   });

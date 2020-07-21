@@ -42,14 +42,28 @@ module.exports = function(app) {
       password: req.body.password,
     })
 
+    // res.redirect(307);
+      .then(function() {
+        console.log("---------------------redirecting-----------------------");
+        res.redirect(307, "/api/signin");
+      })
+      // .catch(function(err) {
+      //   res.status(401).json(err);
+      // });
+  });
+
+  // Post request to add a student to database comes from createStudent.js
+  app.post("/api/createStudent", function(req, res) {
+    db.Student.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      teacher_id: req.body.teacher_id
+    })
+    // .then(function(data) {
+    //   console.log(data);
+    // })
+    // res.status(200).end();
     res.redirect(307);
-      // .then(function() {
-      //   console.log("---------------------redirecting-----------------------");
-      //   res.redirect(307, "/api/signin");
-      // })
-      // // .catch(function(err) {
-      // //   res.status(401).json(err);
-      // // });
   });
 
   // Route for logging user out

@@ -5,9 +5,7 @@ $(document).ready(function () {
 	let registerForm = $("form.register");
 	let firstNameInput = $("input#first-name-input");
 	let lastNameInput = $("input#last-name-input");
-	
 	let emailInput = $("input#email-input");
-	
 	let passwordInput = $("input#password-input");
 
 	
