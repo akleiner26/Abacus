@@ -7,9 +7,11 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // Routes for handlebars
 module.exports = function (app) {
-
+app.get("/", function(req, res) {
+  res.render("signin")
+})
   // Sign in page
-  app.get("/", function (req, res) {
+  app.get("/signin", function (req, res) {
     res.render("signin");
   });
   app.get("/createAssignment", function (req, res) {
@@ -27,6 +29,10 @@ module.exports = function (app) {
   });
 
   // Sets the "homepage" as create an account. I suspect we may want to make a true homepage that gives user options.
+  app.get("/createAccount", function (req, res) {
+    //Currently shows the user portal but without login authentication 
+    res.render("createAccount");
+  });
   app.get("/userportal", isAuthenticated, function (req, res) {
     //Currently shows the user portal but without login authentication 
     res.render("index");

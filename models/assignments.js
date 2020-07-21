@@ -32,11 +32,11 @@ module.exports = function(sequelize, DataTypes) {
 
   });
 
-  // Assignment.associate = function(models) {
-  //   Assignment.hasMany(models.assign, {
-  //       onDelete: "cascade"
-  //     });
-  // };
+  Assignment.associate = function(models) {
+    Assignment.hasMany(models.Grade, {
+        onDelete: "cascade"
+      });
+  };
 
   return Assignment;
 };
