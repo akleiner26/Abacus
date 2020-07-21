@@ -9,11 +9,24 @@ $(document).ready(function () {
 	let dueDate = $("input#newAssignDue");
 	let subject = $("input#newAssignSubject");
 	let addAssign = $("#addAssign");
+	let updateAssign = $(".updateAssign");
 	let modal = $("#myModal");
 	let deleteBtn = $(".del-btn");
 	
 	addAssign.on("click", function () {
         modal.css("display", "block");
+	})
+
+	updateAssign.on("click", function () {
+		modal.css("display", "block");
+		let id = $(this).attr("data-id");
+		let title = $(this).attr("data-title");
+		console.log(id);
+		titleInput.val(title);
+		description.val();
+		assignDate.val();
+		dueDate.val();
+		subject.val();
 	})
 	
 	deleteBtn.on("click", function(){
