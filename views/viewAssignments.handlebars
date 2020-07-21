@@ -3,102 +3,102 @@
 </section>
 
 <section class="row assignRow">
-<section class="container offset-2 col-8">
-  {{#each Assignments}}
-  <div class="card">
-    <section class="eachCard">
-    <div class="card-header">
-      <strong>{{this.title}}</strong>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">
-        {{this.subject}}
-      </h5>
-      <p class="card-text">
-        {{this.description}}
-      </p>
-      <button class="btn viewGradesBtns">View Grades</button>
-      <button href="/"class="btn">Delete Assignment</button>
-    </div>
-    {{/each}}
-    <button id="addAssign" class="btn btn-primary mb-2">Create New Assignment</button>
-    <div id="myModal" class="modal">
-      {{!-- NOTES --}}
-      {{!-- Look into error msg -- not sure how it exactly works --}}
-      {{!-- Check/test link to signin at bottom of page --}}
+  <section class="container offset-2 col-8">
+    {{#each Assignments}}
+    <div class="card">
+      <section class="eachCard">
+        <div class="card-header">
+          <strong>{{this.title}}</strong>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">
+            {{this.subject}}
+          </h5>
+          <p class="card-text">
+            {{this.description}}
+          </p>
+          <button class="btn viewGradesBtns" data-id="{{this.id}}"">View Grades</button>
+          <button href=" /" class="btn">Delete Assignment</button>
+        </div>
+        {{/each}}
+        <button id="addAssign" class="btn btn-primary mb-2">Create New Assignment</button>
+        <div id="myModal" class="modal">
+          {{!-- NOTES --}}
+          {{!-- Look into error msg -- not sure how it exactly works --}}
+          {{!-- Check/test link to signin at bottom of page --}}
 
-      <!-- Insert navbar -->
+          <!-- Insert navbar -->
 
-      <div class="container">
+          <div class="container">
 
-        {{!-- Abacus animation --}}
-        <center class="mt-5">
-          <div class='abacus'>
-            <div class='left'></div>
-            <div class='right'></div>
-            <div class='bar bar1'></div>
-            <div class='bar bar2'></div>
-            <div class='bar bar3'></div>
-            <div class='block red1'></div>
-            <div class='block red2'></div>
-            <div class='block blue1'></div>
-            <div class='block blue2'></div>
-            <div class='block purple1'></div>
-            <div class='block purple2'></div>
-            <div class='block yellow1'></div>
-            <div class='block yellow2'></div>
-          </div>
-        </center>
-
-        <h2 class="text-center">Create an Assignment!</h2>
-
-        <div class="row p-5">
-          <div class="col-12">
-
-
-            <form class="newAssign">
-
-              {{!-- Title --}}
-              <div class="form-group">
-                <label for="inputTitle">Title</label>
-                <input type="text" class="form-control" id="newAssignName" placeholder="Title">
+            {{!-- Abacus animation --}}
+            <center class="mt-5">
+              <div class='abacus'>
+                <div class='left'></div>
+                <div class='right'></div>
+                <div class='bar bar1'></div>
+                <div class='bar bar2'></div>
+                <div class='bar bar3'></div>
+                <div class='block red1'></div>
+                <div class='block red2'></div>
+                <div class='block blue1'></div>
+                <div class='block blue2'></div>
+                <div class='block purple1'></div>
+                <div class='block purple2'></div>
+                <div class='block yellow1'></div>
+                <div class='block yellow2'></div>
               </div>
-              {{!-- Description --}}
-              <div class="form-group">
-                <label for="inputDescription">Description</label>
-                <input type="text" class="form-control" id="newAssignDescrip" placeholder="Description">
+            </center>
+
+            <h2 class="text-center">Create an Assignment!</h2>
+
+            <div class="row p-5">
+              <div class="col-12">
+
+
+                <form class="newAssign">
+
+                  {{!-- Title --}}
+                  <div class="form-group">
+                    <label for="inputTitle">Title</label>
+                    <input type="text" class="form-control" id="newAssignName" placeholder="Title">
+                  </div>
+                  {{!-- Description --}}
+                  <div class="form-group">
+                    <label for="inputDescription">Description</label>
+                    <input type="text" class="form-control" id="newAssignDescrip" placeholder="Description">
+                  </div>
+                  {{!-- Assignment Date --}}
+                  <div class="form-group">
+                    <label for="inputAssignDate">Assignment Date</label>
+                    <input type="text" class="form-control" id="newAssignDate" placeholder="YYYY-MM-DD">
+                  </div>
+                  {{!-- Due Date --}}
+                  <div class="form-group">
+                    <label for="inputDueDate">Due Date</label>
+                    <input type="text" class="form-control" id="newAssignDue" placeholder="YYYY-MM-DD">
+                  </div>
+                  {{!-- Subject --}}
+                  <div class="form-group">
+                    <label for="inputSubject">Subject</label>
+                    <input type="text" class="form-control" id="newAssignSubject" placeholder="Subject">
+                  </div>
+                  {{!-- Error message --}}
+                  <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span> <span class="msg"></span>
+                  </div>
+                  <button id="confirmAssign" class="btn btn-primary mb-2">Confirm</button>
+                </form>
               </div>
-              {{!-- Assignment Date --}}
-              <div class="form-group">
-                <label for="inputAssignDate">Assignment Date</label>
-                <input type="text" class="form-control" id="newAssignDate" placeholder="YYYY-MM-DD">
-              </div>
-              {{!-- Due Date --}}
-              <div class="form-group">
-                <label for="inputDueDate">Due Date</label>
-                <input type="text" class="form-control" id="newAssignDue" placeholder="YYYY-MM-DD">
-              </div>
-              {{!-- Subject --}}
-              <div class="form-group">
-                <label for="inputSubject">Subject</label>
-                <input type="text" class="form-control" id="newAssignSubject" placeholder="Subject">
-              </div>
-              {{!-- Error message --}}
-              <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                <span class="sr-only">Error:</span> <span class="msg"></span>
-              </div>
-              <button id="confirmAssign" class="btn btn-primary mb-2">Confirm</button>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
   </section>
-</section>
-<<<<<<< HEAD
-<script type="text/javascript" src="js/createAssignment.js"></script>
-<script type="text/javascript" src="js/viewGrades.js"></script>
-=======
-<script type="text/javascript" src="js/createAssignment.js"></script>
->>>>>>> a73aa027c557c88d0e2e8078fa2d66bf40bd7008
+  <<<<<<< HEAD <script type="text/javascript" src="js/createAssignment.js">
+    </script>
+    <script type="text/javascript" src="js/viewGrades.js"></script>
+    =======
+    <script type="text/javascript" src="js/createAssignment.js"></script>
+    >>>>>>> a73aa027c557c88d0e2e8078fa2d66bf40bd7008

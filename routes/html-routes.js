@@ -7,31 +7,28 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // Routes for handlebars
 module.exports = function (app) {
-  
-// Sign in page
-  app.get("/", function(req, res) {
-      res.render("signin")
-    });
+
+  // Sign in page
+  app.get("/", function (req, res) {
+    res.render("signin")
+  });
   app.get("/signin", function (req, res) {
     res.render("signin");
   });
-//Create Account
+  //Create Account
   app.get("/create-account", function (req, res) {
     res.render("createAccount");
   });
 
-  
-//Create Assignment
+
+  //Create Assignment
   app.get("/createAssignment", function (req, res) {
     res.render("createAssignment");
   });
-  //Get single assignment
-  app.get("/assignments/:assignment", isAuthenticated, function (req, res) {
-    res.render("soloAssignment");
-  });
+
   //Get all assigments
   app.get("/assignments", function (req, res) {
-    
+
     db.Assignment.findAll({ raw: true })
       .then(function (assignmentData) {
 
@@ -43,9 +40,14 @@ module.exports = function (app) {
       });
   });
 
+  //Get single assignment
+  app.get("/assignments/:assignment", isAuthenticated, function (req, res) {
+    db.Assignment.findAll({ raw: true })
+   
+    res.render("soloAssignment");
+  });
 
-
-// View by students page 
+  // View by students page 
   app.get("/students", isAuthenticated, function (req, res) {
 
     db.Assignment.findAll({ raw: true })
@@ -54,12 +56,13 @@ module.exports = function (app) {
 
 
         // req.user.id grabs the id of currently signed in user from passport
-        db.Student.findAll({ 
-          raw: true, 
+        db.Student.findAll({
+          raw: true,
           include: [db.Grade],
           where: {
             TeacherId: req.user.id
-          }})
+          }
+        })
           .then(function (userData) {
             console.log(userData);
 
@@ -88,7 +91,7 @@ module.exports = function (app) {
                       assignmentId++;
                       console.log(`New assignment ID is ${assignmentId}`)
                     }
-  
+
                     studentData.push(studentObj)
                   };
 
@@ -101,15 +104,15 @@ module.exports = function (app) {
                   studentObj.last_name = userData[i].last_name;
                 }
 
-                
-                    if (userData[i]['Grades.AssignmentId'] !== null) {
-                      assignmentId = userData[i]['Grades.AssignmentId'];
 
-                      console.log(`Reassigned assignment ID is ${assignmentId}`)
-  
-                      studentObj.grades.push(userData[i]['Grades.gradeVal']);
-                    }
-                  
+                if (userData[i]['Grades.AssignmentId'] !== null) {
+                  assignmentId = userData[i]['Grades.AssignmentId'];
+
+                  console.log(`Reassigned assignment ID is ${assignmentId}`)
+
+                  studentObj.grades.push(userData[i]['Grades.gradeVal']);
+                }
+
               }
 
             } console.log(studentData);
@@ -122,21 +125,21 @@ module.exports = function (app) {
 
   // Create Account
   app.get("/createAccount", function (req, res) {
-    
+
     res.render("createAccount");
   });
   //Teacher Portal
   app.get("/userportal", isAuthenticated, function (req, res) {
-    
+
     res.render("index");
   });
 
-//Grades
+  //Grades
   app.get("/grades", isAuthenticated, function (req, res) {
     res.render("grades");
   });
 
-//Catch all
+  //Catch all
   app.get("*", function (req, res) {
     res.render("index");
   });
