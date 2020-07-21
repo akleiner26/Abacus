@@ -16,7 +16,6 @@ module.exports = function (app) {
   });
 
   // Sign in page
-  app.get("/", function (req, res) {
   app.get("/signin", function (req, res) {
     res.render("signin");
   });
