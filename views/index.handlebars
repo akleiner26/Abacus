@@ -1,9 +1,17 @@
-{{!-- NOTES --}}
-{{!-- Add in correct key for teacher name to handlebars --}}
-{{!-- Add navbar --}}
-{{!-- Fix links to students and assignments pages --}}
-{{!-- Fix title in tab bar --}}
+{{!-- Start navbar --}}
+<nav class="navbar navbar-light bg-light fixed-top border-bottom shadow-sm">
+    <div>
+        <a href="/userportal" class="navbar-brand">ABACUS</a>
+    </div>
 
+    <div class="d-flex flex-row">
+        <div class=" d-flex flex-row navbar-nav mr-auto mt-2 mt-lg-0">
+            <a id="navLink1" class="nav-link nav-item active" href="/userportal">Home</a>
+            <a id="navLink2" class="nav-link nav-item" href="/">Logout</a>
+        </div>
+    </div>
+</nav>
+{{!-- End navbar --}}
 
 <div class="container wrapper text-center">
     {{!-- Below doesn't work: Error: Missing Helper: TEACHER --}}
