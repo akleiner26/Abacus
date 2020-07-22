@@ -18,11 +18,7 @@ module.exports = {
     "port": 3306
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "abacus_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "port": 3306
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
   }
 }
