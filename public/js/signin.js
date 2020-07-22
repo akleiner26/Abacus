@@ -1,3 +1,6 @@
+// DONE - Matched with signin.handlebars
+// Check post route with api-routes.js
+
 $(document).ready(function () {
 	let signinForm = $("form.signin");
 	let emailInput = $("input#email-input");
@@ -35,6 +38,21 @@ $(document).ready(function () {
 				// .catch(function (err) {
 				// 	console.log(err);
 				// });
+				.fail(function() {
+					console.log("------------------invalid login---------------------")
+					let emailContain = $("#emailErrorContainer");
+        			let passContain = $("#passErrorContainer");
+					let emailErr= $("<small>");
+					emailErr.attr("id", "passwordHelp");
+					emailErr.addClass("text-danger");
+					emailErr.text("Please ensure your email is valid.");
+					emailContain.append(emailErr);
+					let passErr= $("<small>");
+					passErr.attr("id", "passwordHelp");
+					passErr.addClass("text-danger");
+					passErr.text("Please enter a correct password");
+					passContain.append(passErr);
+				})
 		}
 	});
 });
