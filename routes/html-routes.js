@@ -40,14 +40,41 @@ module.exports = function (app) {
 			});
 	});
 
-	//Get single assignment
+	// Get class grades for a single assignment
 	app.get("/assignments/:id", isAuthenticated, function (req, res) {
-		db.Assignment.findOne({
-			raw: true, where: { id: req.params.id }, include: [db.Student]
-		}).then(function (assignmentData) {
-			res.render("soloAssignment", assignmentData);
-		})
 
+		// Grabs the students based on teacher who is signed in
+		db.Student.findAll({
+			raw: true,
+			include: [db.Grade],
+			where: {
+				TeacherId: req.user.id
+			}
+		}).then(function (studentData) {
+			console.log(studentData)
+
+			let assignmentData = [];
+			let studentIdArr = [];
+			let studentId = 0;
+
+			// Goes through studentData to pull out unique student ids
+			for (let i = 0; i < studentData.length; i++) {
+				// console.log(req.params.id)
+				// console.log(studentData[i]["Grades.AssignmentId"])
+				// console.log(studentData[i]["Grades.AssignmentId"] == req.params.id)
+
+				if ((studentData[i]["Grades.AssignmentId"] == req.params.id || studentData[i]["Grades.AssignmentId"] === null) &&
+					studentIdArr.includes(studentData[i].id) === false) {
+					assignmentData.push(studentData[i]);
+					studentIdArr.push(studentData[i].id);
+				}
+			}
+			console.log(assignmentData)
+			console.log(studentIdArr);
+
+			res.render("soloAssignment", { grades: assignmentData });
+
+		})
 	});
 
 	// View by students page 
@@ -141,10 +168,10 @@ module.exports = function (app) {
 	});
 
 	// End passport session on logout
-	app.get('/logout', function(req, res){
+	app.get('/logout', function (req, res) {
 		req.logout();
 		res.redirect('/');
-	  });
+	});
 
 	//Catch all
 	app.get("*", function (req, res) {

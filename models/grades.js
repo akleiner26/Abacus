@@ -13,7 +13,13 @@ module.exports = function(sequelize, DataTypes) {
   
   
   
-  
+  Grade.associate = function(models) {
+    Grade.belongsTo(models.Student, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   
     return Grade;
   };
