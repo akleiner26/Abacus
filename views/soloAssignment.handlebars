@@ -1,7 +1,7 @@
 {{!-- Start navbar --}}
-<nav class="navbar navbar-light bg-light fixed-top border-bottom shadow-sm">
+{{!-- <nav class="navbar navbar-light bg-light fixed-top border-bottom shadow-sm">
     <div>
-        <a href="/userportal" class="navbar-brand">ABACUS</a>
+        <a href="/userportal" class="navbar-title">ABACUS</a>
     </div>
 
     <div class="d-flex flex-row">
@@ -10,29 +10,33 @@
             <a id="logoutLink" class="nav-link nav-item" href="/logout">Logout</a>
         </div>
     </div>
-</nav>
+</nav> --}}
 {{!-- End navbar --}}
 
-<h1 class="soloAssignHead">
-    {{this.title}}
-</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Grade</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">
-          {{#each students}}
-      </th>
-      <td>{{student.first_name}}</td>
-      <td>{{student.last_name}}</td>
-      <td>{{this.grade}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class='container wrapper wrapper3'>
+	<h1>
+		{{this.title}}
+	</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Student ID</th>
+				<th scope="col">Student Name</th>
+				<th scope="col">Assignment Grade</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each grades}}
+			<tr>
+				<th scope="row">{{this.id}}</th>
+
+				{{!-- {{#each students}} --}}
+				<td>{{this.first_name}} {{this.last_name}}</td>
+				{{!-- {{/each}} --}}
+
+				<td>{{"Grades.gradeVal"}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</div>
