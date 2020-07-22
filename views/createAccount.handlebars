@@ -1,8 +1,17 @@
-{{!-- NOTES --}}
-{{!-- Look into error msg -- not sure how it exactly works --}}
-{{!-- Check/test link to signin at bottom of page --}}
+{{!-- Start navbar --}}
+<nav class="navbar navbar-light bg-light fixed-top border-bottom shadow-sm">
+    <div>
+        <a href="/create-account" class="navbar-brand">ABACUS</a>
+    </div>
 
-<!-- Insert navbar -->
+    <div class="d-flex flex-row">
+        <div class=" d-flex flex-row navbar-nav mr-auto mt-2 mt-lg-0">
+            <a id="navLink1" class="nav-link nav-item" href="/">Sign In</a>
+            <a id="navLink2" class="nav-link nav-item active" href="/create-account">Register</a>
+        </div>
+    </div>
+</nav>
+{{!-- End navbar --}}
 
 <div class="container register-signin-wrapper">
 

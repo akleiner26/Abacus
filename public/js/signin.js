@@ -1,6 +1,3 @@
-// DONE - Matched with signin.handlebars
-// Check post route with api-routes.js
-
 $(document).ready(function () {
 	let signinForm = $("form.signin");
 	let emailInput = $("input#email-input");
