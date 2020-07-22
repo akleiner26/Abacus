@@ -27,7 +27,7 @@ module.exports = function (app) {
 	});
 
 	//Get all assigments
-	app.get("/assignments", function (req, res) {
+	app.get("/assignments", isAuthenticated, function (req, res) {
 
 		db.Assignment.findAll({ raw: true })
 			.then(function (assignmentData) {
