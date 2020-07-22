@@ -1,21 +1,20 @@
 {{!-- Start navbar --}}
 <nav class="navbar navbar-light bg-light fixed-top border-bottom shadow-sm">
     <div>
-        <a href="/userportal" class="navbar-brand">ABACUS</a>
+        <a href="/userportal" class="navbar-title">ABACUS</a>
     </div>
 
     <div class="d-flex flex-row">
         <div class=" d-flex flex-row navbar-nav mr-auto mt-2 mt-lg-0">
             <a id="navLink1" class="nav-link nav-item" href="/userportal">Home</a>
-            <a id="navLink2" class="nav-link nav-item" href="/">Logout</a>
+            <a id="logoutLink" class="nav-link nav-item" href="/logout">Logout</a>
         </div>
     </div>
 </nav>
 {{!-- End navbar --}}
 
-<div class='container'>
+<div class='container wrapper wrapper3'>
     {{!-- Buttons --}}
-    <a href="/assignments" id="viewBtn" class="btn">View Assignments</a>
     <button id="addBtn" class="btn">+ Add Student</button>
 
     <!-- Modal for form to add a student -->
@@ -57,8 +56,8 @@
     </div>
 
     {{!-- Table with student data --}}
-    <table class="table table-hover">
-        <thead class="thead-dark">
+    <table class="table table-hover studentTable shadow">
+        <thead class="student-table-head">
             <tr>
                 <th scope="col">Student Name</th>
 
@@ -66,6 +65,8 @@
                 {{#each assignments}}
                 <th scope="col">{{this.title}}</th>
                 {{/each}}
+
+                <th scope="col">Average</th>
             </tr>
         </thead>
         <tbody>

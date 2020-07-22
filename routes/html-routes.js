@@ -140,6 +140,12 @@ module.exports = function (app) {
 		res.render("grades");
 	});
 
+	// End passport session on logout
+	app.get('/logout', function(req, res){
+		req.logout();
+		res.redirect('/');
+	  });
+
 	//Catch all
 	app.get("*", function (req, res) {
 		res.render("index");
