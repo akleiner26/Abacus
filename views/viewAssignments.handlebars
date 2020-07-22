@@ -18,7 +18,7 @@
             {{this.description}}
           </p>
           <button class="btn viewGradesBtn" data-id="{{this.id}}">View Grades</button>
-          <button class="btn btn-primary updateAssign" data-id="{{id}}" data-title="{{title}}">Update
+          <button class="btn btn-primary updateAssign" data-id="{{this.id}}" data-title="{{this.title}}" data-description="{{this.description}}" data-assignDate="{{this.assignment_date}}" data-dueDate="{{this.due_date}}" data-subject="{{this.subject}}">Update
             Assignment</button>
           <button data-id="{{id}}" class="btn btn-primary del-btn">Delete Assignment</button>
         </div>
@@ -101,7 +101,7 @@
     </div>
   </div>
 
-<div id="myModal" class="modal">
+<div id="updateModal" class="modal">
   {{!-- NOTES --}}
   {{!-- Look into error msg -- not sure how it exactly works --}}
   {{!-- Check/test link to signin at bottom of page --}}
@@ -135,7 +135,7 @@
       <div class="col-12">
 
 
-        <form class="newAssign">
+        <form class="updateForm">
 
           {{!-- Title --}}
           <div class="form-group">
