@@ -6,10 +6,12 @@
 .studentTable {
     background: #f7f6f6;
     border-radius: 5px;
+    width: 100%;
 }
 
 .student-table-head {
-    background: #421c52;
+    background: #800080;
+    width: 100%;
     color: white;
 }
 
@@ -78,6 +80,6 @@ h3 {
     padding: 15px 16px 2px 16px;
 }
 
-#addStudentBtn, #closeBtn {
+#addStudentBtn, #closeBtn, #confirmAssign {
     margin: 10px 10px;
 }

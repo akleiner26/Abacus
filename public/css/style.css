@@ -49,6 +49,7 @@ a:hover {
 
 .btn:hover {
     background: #800080;
+    /* background: #ae0152; */
     color: white;
 }
 
@@ -57,3 +58,29 @@ footer {
     padding: 20px;
     width: 100vw;
 }
+
+/* Assignments page */
+.assignHead {
+    color: #43464b;
+    font-family: 'Federo', sans-serif;
+}
+
+.assignment-cards {
+    border: 1px solid #800080 !important;
+    border-radius: 8px;
+}
+
+.assignment-headers {
+    background: #800080;
+    opacity: 0.8;
+    color: white;
+    padding: 20px;
+}
+
+.card {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #421c52;
+};
