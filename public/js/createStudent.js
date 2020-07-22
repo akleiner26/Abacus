@@ -2,6 +2,7 @@ $(document).ready(function () {
     let modal = $("#myModal");
     let addBtn = $("#addBtn");
     let saveBtn = $("#saveBtn")
+    let closeBtn = $("#closeBtn")
     let firstNameInput = $("input#first-name-input");
 	let lastNameInput = $("input#last-name-input");
 	let teacherIdInput = $("input#teacher-id-input");
@@ -49,5 +50,9 @@ $(document).ready(function () {
                     console.log("successfully saved!")
 				})
 		}
+    })
+
+    closeBtn.on("click", function (event) {
+        modal.style.display = "none";
     })
 });

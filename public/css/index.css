@@ -1,12 +1,15 @@
 .wrapper {
     width: 90%;
-    padding: 60px 30px;
-    padding-bottom: 80px;
     margin-top: 140px;
+    background: rgba(211, 211, 211, 0.6);
 }
 
 .wrapper2 {
-    margin-top: 140px;
+    padding: 60px 30px;
+}
+
+.wrapper3 {
+    padding: 20px 30px;
 }
 
 h2 {

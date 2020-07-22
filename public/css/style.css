@@ -4,21 +4,33 @@
 }
 
 body {
-    background-image: url('../images/57\ Winter_Song\ copy.png');
+    background-image: url('../images/ryan-stone-U3cctUBucn0-unsplash.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
 
-/* Navbar */
+.navbar {
+    background: #f7f6f6 !important;
+}
+
+.navbar-title {
+    font-family: 'Federo', sans-serif;
+    font-size: 2em;
+    color: #43464b;
+    padding: 10px;
+}
+
 #navLink1, #navLink2, #logoutLink {
-    padding: 15px;
+    padding: 10px;
 }
 
 .container {
-    background: white;
-    border: 1px solid #d3d3d3;
+    /* background: white; */
+    /* background: rgba(211, 211, 211, 0.6); */
+    /* opacity: 0.9; */
+    /* border: 1px solid #d3d3d3; */
     border-radius: 5px;
     margin-top: 50px;
     margin-bottom: 70px;
@@ -27,15 +39,16 @@ body {
 
 a:hover {
     text-decoration: none;
+    color: #800080;
 }
 
 .btn {
-    background: #1dacd6;
+    background: #421c52;
     color: white;
 }   
 
 .btn:hover {
-    background: #25bbe9;
+    background: #800080;
     color: white;
 }
 
@@ -43,15 +56,4 @@ footer {
     background: #e4e4e4;
     padding: 20px;
     width: 100vw;
-}
-
-.opaque {
-    background: lightgray;
-    opacity: 0.4;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
 }
