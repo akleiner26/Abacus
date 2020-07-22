@@ -27,7 +27,6 @@ $(document).ready(function () {
         }
 
         console.log(newStudent);
-
         if (!newStudent.first_name || !newStudent.last_name || !newStudent.teacher_id) {
 			return;
         }

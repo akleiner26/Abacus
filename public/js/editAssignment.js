@@ -11,24 +11,49 @@ $(document).ready(function () {
 	let addAssign = $("#addAssign");
 	let updateAssign = $(".updateAssign");
 	let modal = $("#myModal");
+	let updateModal = $("#updateModal");
 	let deleteBtn = $(".del-btn");
+	let updateForm = $("form.updateForm")
 	
 	addAssign.on("click", function () {
         modal.css("display", "block");
 	})
 
 	updateAssign.on("click", function () {
-		modal.css("display", "block");
+		updateModal.css("display", "block");
 		let id = $(this).attr("data-id");
 		let title = $(this).attr("data-title");
+		let descriptionVal = $(this).attr("data-description")
+		let assignDateVal= $(this).attr("data-assignDate");
+		let dueDateVal = $(this).attr("data-dueDate");
+		let subjectVal = $(this).attr("data-subject");
 		console.log(id);
 		titleInput.val(title);
-		description.val();
-		assignDate.val();
-		dueDate.val();
-		subject.val();
-	})
+		description.val(descriptionVal);
+		assignDate.val(assignDateVal);
+		dueDate.val(dueDateVal);
+		subject.val(subjectVal);
+		 updatedAssignment = {
+			id: id,
+			title: title,
+			description: descriptionVal,
+			assignment_date: assignDateVal,
+			due_date: dueDateVal,
+			subject: subjectVal
+		} 
+		updateForm.on("submit", function (event) {
+		$.ajax("/api/assignments/" + id, {
+			type: "PUT",
+			data: updatedAssignment
+		}).then (
+			function (updatedAssignment){
+				console.log("Changed Assignment to: " + updatedAssignment);
+				location.reload();
+			});
+		})
 	
+		});
+
 	deleteBtn.on("click", function(){
 		let id = $(this).attr("data-id");
 		console.log(id);
