@@ -21,8 +21,23 @@ $(document).ready(function () {
 		};
 
 		console.log(userData);
+		let emailContain = $("#emailErrorContainer");
+        let passContain = $("#passErrorContainer");
+		if (!userData.email) {
+			let emailErr= $("<small>");
+			emailErr.attr("id", "passwordHelp");
+			emailErr.addClass("text-danger");
+			emailErr.text("Please use valid email format (example@email.com");
+			emailContain.append(emailErr);
+			return;
+		}
 
-		if (!userData.email || !userData.password) {
+		if (!userData.password) {
+			let passErr= $("<small>");
+			passErr.attr("id", "passwordHelp");
+			passErr.addClass("text-danger");
+			passErr.text("Please enter a password");
+			passContain.append(passErr);
 			return;
 		}
 		// Run function registerUser if email and password are valid
