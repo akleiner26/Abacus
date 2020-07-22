@@ -16,6 +16,11 @@ $(document).ready(function () {
         }
     })
 
+    // Closes modal to add student
+    closeBtn.on("click", function (event) {
+        modal.css("display", "block");
+    })
+
    saveBtn.on("click", function (event) {
         event.preventDefault();
         
@@ -50,9 +55,5 @@ $(document).ready(function () {
                     console.log("successfully saved!")
 				})
 		}
-    })
-
-    closeBtn.on("click", function (event) {
-        modal.style.display = "none";
     })
 });

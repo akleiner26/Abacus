@@ -20,22 +20,24 @@ $(document).ready(function () {
 	let updateAssignDue = $("#updateAssignDue");
 	let updateAssignSubject = $("#updateAssignSubject");
 	let id;
+	let closeBtn3 = $("#closeBtn3")
 
 	function getForm() {
 		return {
-				title: updateAssignTitle.val().trim(),
-				description: updateAssignDescription.val().trim(),
-				assignment_date: updateAssignDate.val().trim(),
-				due_date: updateAssignDue.val().trim(),
-				subject: updateAssignSubject.val().trim()
+			title: updateAssignTitle.val().trim(),
+			description: updateAssignDescription.val().trim(),
+			assignment_date: updateAssignDate.val().trim(),
+			due_date: updateAssignDue.val().trim(),
+			subject: updateAssignSubject.val().trim()
 		}
 	}
 
-	addAssign.on("click", function () {
-		modal.css("display", "block");
+	// Closes "Update Assignment" modal
+	closeBtn3.on("click", function (event) {
+		updateModal.css("display", "block");
 	})
 
-	updateAssign.on("click", function(){
+	updateAssign.on("click", function () {
 		id = $(this).attr("data-id");
 		let title = $(this).attr("data-title");
 		let descriptionVal = $(this).attr("data-description")
@@ -49,7 +51,7 @@ $(document).ready(function () {
 		updateAssignDue.val(dueDateVal);
 		updateAssignSubject.val(subjectVal);
 		updateModal.css("display", "block");
-		
+
 	});
 
 
@@ -112,15 +114,7 @@ $(document).ready(function () {
 			})
 				.then(function (data) {
 					window.location.replace("/assignments");
-					// Throws up bootstrap alert if there is an error
 				})
-			//for some reason this was causing an error. then.catch is not a function
-			// .catch(handleLoginErr);
-		}
-
-		function handleLoginErr(err) {
-			$("#alert .msg").text(err.responseJSON);
-			$("#alert").fadeIn(500);
 		}
 	});
 });

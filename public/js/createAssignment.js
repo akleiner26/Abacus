@@ -9,16 +9,21 @@ $(document).ready(function () {
 	let dueDate = $("input#newAssignDue");
 	let subject = $("input#newAssignSubject");
 	let addAssign = $("#addAssign");
-	let modal = $("#myModal");
+	let addModal = $("#addModal");
+	let closeBtn2 = $("#closeBtn2")
 	
 	addAssign.on("click", function () {
-        modal.css("display", "block");
-    })
-	
-	// Validates that email and password fields are not blank when 'create account' button is clicked
+        addModal.css("display", "block");
+	})
+
+	// Closes "Create Assignment" modal
+	closeBtn2.on("click", function (event) {
+        addModal.css("display", "none");
+	})
+
 	newAssignForm.on("submit", function (event) {
 		event.preventDefault();
-		console.log("--------------submitted---------------");
+		// console.log("--------------submitted---------------");
 
 		let assignData = {
 			title: titleInput.val().trim(),
@@ -28,7 +33,7 @@ $(document).ready(function () {
 			subject: subject.val().trim(),
 		};
 
-		console.log(assignData);
+		// console.log(assignData);
 
 		createAssign(assignData.title, assignData.description, assignData.assignment_date, assignData.due_date, assignData.subject)
 		titleInput.val("");
@@ -47,23 +52,7 @@ $(document).ready(function () {
 			})
 				.then(function (data) {
 					window.location.replace("/assignments");
-					// Throws up bootstrap alert if there is an error
 				})
-				//for some reason this was causing an error. then.catch is not a function
-				// .catch(handleLoginErr);
-		}
-
-		function handleAssignUpdate() {
-			var currentAssign = $(this)
-			  .parent()
-			  .parent()
-			  .data("assignment");
-			window.location.href = "/cms?assignment_id=" + currentAssign.id;
-		  }
-
-		function handleLoginErr(err) {
-			$("#alert .msg").text(err.responseJSON);
-			$("#alert").fadeIn(500);
 		}
 	});
 });
