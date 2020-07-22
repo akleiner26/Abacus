@@ -105,6 +105,7 @@ module.exports = function(app) {
       res.json(dbAssignment);
     });
   });
+
   app.post("/api/createAssignment", function(req, res) {
     console.log("---------------------------------------created assignment--------------------------------------------");
     db.Assignment.create({
@@ -123,12 +124,14 @@ module.exports = function(app) {
       // });
   });
 
-  app.put("/api/assignments", function(req, res) {
+  app.put("/api/assignments/:id", function(req, res) {
+    console.log(req.params.id)
+    console.log(req)
     db.Assignment.update(
       req.body,
       {
         where: {
-          id: req.body.id
+          id: req.params.id
         }
       }).then(function(dbAssignment) {
       res.json(dbAssignment);

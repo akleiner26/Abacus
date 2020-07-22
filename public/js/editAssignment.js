@@ -14,58 +14,72 @@ $(document).ready(function () {
 	let updateModal = $("#updateModal");
 	let deleteBtn = $(".del-btn");
 	let updateForm = $("form.updateForm")
-	
+	let updateAssignTitle = $("#updateAssignName");
+	let updateAssignDescription = $("#updateAssignDescrip");
+	let updateAssignDate = $("#updateAssignDate");
+	let updateAssignDue = $("#updateAssignDue");
+	let updateAssignSubject = $("#updateAssignSubject");
+	let id;
+
+	function getForm() {
+		return {
+				title: updateAssignTitle.val().trim(),
+				description: updateAssignDescription.val().trim(),
+				assignment_date: updateAssignDate.val().trim(),
+				due_date: updateAssignDue.val().trim(),
+				subject: updateAssignSubject.val().trim()
+		}
+	}
+
 	addAssign.on("click", function () {
-        modal.css("display", "block");
+		modal.css("display", "block");
 	})
 
-	updateAssign.on("click", function () {
-		updateModal.css("display", "block");
-		let id = $(this).attr("data-id");
+	updateAssign.on("click", function(){
+		id = $(this).attr("data-id");
 		let title = $(this).attr("data-title");
 		let descriptionVal = $(this).attr("data-description")
-		let assignDateVal= $(this).attr("data-assignDate");
+		let assignDateVal = $(this).attr("data-assignDate");
 		let dueDateVal = $(this).attr("data-dueDate");
 		let subjectVal = $(this).attr("data-subject");
 		console.log(id);
-		titleInput.val(title);
-		description.val(descriptionVal);
-		assignDate.val(assignDateVal);
-		dueDate.val(dueDateVal);
-		subject.val(subjectVal);
-		 updatedAssignment = {
-			id: id,
-			title: title,
-			description: descriptionVal,
-			assignment_date: assignDateVal,
-			due_date: dueDateVal,
-			subject: subjectVal
-		} 
-		updateForm.on("submit", function (event) {
+		updateAssignTitle.val(title);
+		updateAssignDescription.val(descriptionVal);
+		updateAssignDate.val(assignDateVal);
+		updateAssignDue.val(dueDateVal);
+		updateAssignSubject.val(subjectVal);
+		updateModal.css("display", "block");
+		
+	});
+
+
+	updateForm.on("submit", function (event) {
+		event.preventDefault();
+		console.log("WOOOHOOO")
+		console.log(id);
+		const updatedAssignment = getForm()
 		$.ajax("/api/assignments/" + id, {
 			type: "PUT",
 			data: updatedAssignment
-		}).then (
-			function (updatedAssignment){
-				console.log("Changed Assignment to: " + updatedAssignment);
+		}).then(
+			function (data) {
+				console.log("Changed Assignment to: " + data);
 				location.reload();
 			});
-		})
-	
-		});
+	})
 
-	deleteBtn.on("click", function(){
+	deleteBtn.on("click", function () {
 		let id = $(this).attr("data-id");
 		console.log(id);
 		$.ajax("/api/assignments/" + id, {
 			type: "DELETE"
-		}).then (function(id){
+		}).then(function (id) {
 			console.log(`Deleted Assignment with ID = ${id}`)
 			location.reload();
 		})
 	})
 
-	
+
 	// Validates that email and password fields are not blank when 'create account' button is clicked
 	newAssignForm.on("submit", function (event) {
 		event.preventDefault();
@@ -100,8 +114,8 @@ $(document).ready(function () {
 					window.location.replace("/assignments");
 					// Throws up bootstrap alert if there is an error
 				})
-				//for some reason this was causing an error. then.catch is not a function
-				// .catch(handleLoginErr);
+			//for some reason this was causing an error. then.catch is not a function
+			// .catch(handleLoginErr);
 		}
 
 		function handleLoginErr(err) {
