@@ -8,7 +8,7 @@ var basename  = path.basename(module.filename);
 //env variable use production/heroku or local development from config.json. Env on line 17 
 var env       = process.env.NODE_ENV || 'development';
 //pulls json
-var config    = require(__dirname + '/../config/config.json')[env];
+var config    = require(__dirname + '/../config/config.js')[env];
 var db        = {};
 
 //use_env_variable would be in config env as a boolean to help with a password (?)
