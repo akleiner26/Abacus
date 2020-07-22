@@ -12,7 +12,7 @@ body {
 }
 
 /* Navbar */
-#navLink1, #navLink2 {
+#navLink1, #navLink2, #logoutLink {
     padding: 15px;
 }
 
