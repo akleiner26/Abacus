@@ -85,6 +85,7 @@ module.exports = function (app) {
 		db.Assignment.findAll({ raw: true })
 			.then(function (assignmentData) {
 				// let assignmentCount = assignmentData.length;
+				// console.log(assignmentData);
 
 				// req.user.id grabs the id of currently signed in user from passport
 				db.Student.findAll({
@@ -141,7 +142,7 @@ module.exports = function (app) {
 								if (userData[i]['Grades.AssignmentId'] !== null) {
 									assignmentId = userData[i]['Grades.AssignmentId'];
 
-									console.log(`Reassigned assignment ID is ${assignmentId}`)
+									// console.log(`Reassigned assignment ID is ${assignmentId}`)
 
 									studentObj.grades.push(userData[i]['Grades.gradeVal']);
 								}

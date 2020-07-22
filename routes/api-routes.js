@@ -107,6 +107,7 @@ module.exports = function(app) {
   });
 
   app.post("/api/createAssignment", function(req, res) {
+    console.log(req.body);
     console.log("---------------------------------------created assignment--------------------------------------------");
     db.Assignment.create({
       title: req.body.title,
