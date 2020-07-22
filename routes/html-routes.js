@@ -79,7 +79,7 @@ module.exports = function (app) {
 		})
 	});
 
-	// View by students page 
+	// View students page 
 	app.get("/students", isAuthenticated, function (req, res) {
 
 		db.Assignment.findAll({ raw: true })

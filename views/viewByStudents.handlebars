@@ -14,8 +14,6 @@
 {{!-- End navbar --}}
 
 <div class='container wrapper wrapper3'>
-    {{!-- Buttons --}}
-    <button id="addBtn" class="btn">+ Add Student</button>
 
     <!-- Modal for form to add a student -->
     <div id="myModal" class="modal">
@@ -60,27 +58,24 @@
         <thead class="student-table-head">
             <tr>
                 <th scope="col">Student Name</th>
-
-                {{!-- We need to figure out how to populate these from the data that's currently in workbench --}}
                 {{#each assignments}}
                 <th scope="col">{{this.title}}</th>
                 {{/each}}
-
-                <th scope="col">Average</th>
             </tr>
         </thead>
         <tbody>
             {{#each students}}
             <tr>
                 <th scope="row">{{this.first_name}} {{this.last_name}}</th>
-
                 {{#each this.grades}}
                 <td>{{this}}</td>
                 {{/each}}
-                
             </tr>
             {{/each}}
         </tbody>
     </table>
+
+    {{!-- Buttons --}}
+    <button id="addBtn" class="btn">+ Add Student</button>
 </div>
 <script type="text/javascript" src="js/createStudent.js"></script>
