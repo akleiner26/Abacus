@@ -37,7 +37,9 @@ module.exports = function(sequelize, DataTypes) {
 //how to assign a reflexive foreign key.
 
   Student.associate = function(models) {
-    Student.hasMany(models.Grade)
+    Student.hasMany(models.Grade, {
+      onDelete: "cascade"
+    })
   };
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   // Student.prototype.validPassword = function(password) {
