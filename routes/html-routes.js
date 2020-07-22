@@ -66,8 +66,10 @@ module.exports = function (app) {
 					}
 				})
 					.then(function (userData) {
-						// console.log(userData);
-
+						console.log(userData);
+						if (userData.length === 0){
+							res.render("viewByStudents");
+						} else{
 						let studentData = [];
 						let studentObj = {};
 						let studentId = 0;
@@ -120,6 +122,7 @@ module.exports = function (app) {
 						// console.log(studentData);
 
 						res.render("viewByStudents", { students: studentData, assignments: assignmentData });
+					};
 					});
 			})
 	});
