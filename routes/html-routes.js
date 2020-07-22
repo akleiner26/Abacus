@@ -40,10 +40,9 @@ module.exports = function (app) {
 			});
 	});
 
-	// Get class grades for a single assignment
+	// View class grades for a single assignment
 	app.get("/assignments/:id", isAuthenticated, function (req, res) {
 
-		// Grabs the students based on teacher who is signed in
 		db.Student.findAll({
 			raw: true,
 			include: [db.Grade],
@@ -53,27 +52,30 @@ module.exports = function (app) {
 		}).then(function (studentData) {
 			console.log(studentData)
 
-			let assignmentData = [];
-			let studentIdArr = [];
-			let studentId = 0;
+			// If there are no students, then shows the page, else it will pull up the page with the student data
+			if (studentData.length === 0) {
+				res.render("soloAssignment");
+			} else {
+				let assignmentData = [];
+				let studentIdArr = [];
+				let studentId = 0;
 
-			// Goes through studentData to pull out unique student ids
-			for (let i = 0; i < studentData.length; i++) {
-				// console.log(req.params.id)
-				// console.log(studentData[i]["Grades.AssignmentId"])
-				// console.log(studentData[i]["Grades.AssignmentId"] == req.params.id)
+				for (let i = 0; i < studentData.length; i++) {
+					// console.log(req.params.id)
+					// console.log(studentData[i]["Grades.AssignmentId"])
+					// console.log(studentData[i]["Grades.AssignmentId"] == req.params.id)
 
-				if ((studentData[i]["Grades.AssignmentId"] == req.params.id || studentData[i]["Grades.AssignmentId"] === null) &&
-					studentIdArr.includes(studentData[i].id) === false) {
-					assignmentData.push(studentData[i]);
-					studentIdArr.push(studentData[i].id);
+					if ((studentData[i]["Grades.AssignmentId"] == req.params.id || studentData[i]["Grades.AssignmentId"] === null) &&
+						studentIdArr.includes(studentData[i].id) === false) {
+						assignmentData.push(studentData[i]);
+						studentIdArr.push(studentData[i].id);
+					}
 				}
+				console.log(assignmentData)
+				console.log(studentIdArr);
+
+				res.render("soloAssignment", { grades: assignmentData });
 			}
-			console.log(assignmentData)
-			console.log(studentIdArr);
-
-			res.render("soloAssignment", { grades: assignmentData });
-
 		})
 	});
 
