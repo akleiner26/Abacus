@@ -1,5 +1,5 @@
 {{!-- Start navbar --}}
-{{!-- <nav class="navbar navbar-light bg-light fixed-top border-bottom shadow-sm">
+<nav class="navbar navbar-light bg-light fixed-top border-bottom shadow-sm">
     <div>
         <a href="/userportal" class="navbar-title">ABACUS</a>
     </div>
@@ -10,15 +10,15 @@
             <a id="logoutLink" class="nav-link nav-item" href="/logout">Logout</a>
         </div>
     </div>
-</nav> --}}
+</nav>
 {{!-- End navbar --}}
 
 <div class='container wrapper wrapper3'>
 	<h1>
 		{{this.title}}
 	</h1>
-	<table class="table">
-		<thead>
+	<table class="table table-hover studentTable shadow">
+		<thead class="student-table-head">
 			<tr>
 				<th scope="col">Student ID</th>
 				<th scope="col">Student Name</th>
@@ -30,9 +30,7 @@
 			<tr>
 				<th scope="row">{{this.id}}</th>
 
-				{{!-- {{#each students}} --}}
 				<td>{{this.first_name}} {{this.last_name}}</td>
-				{{!-- {{/each}} --}}
 
 				<td>{{"Grades.gradeVal"}}</td>
 			</tr>
