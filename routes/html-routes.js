@@ -57,7 +57,6 @@ module.exports = function (app) {
 			.then(function (assignmentData) {
 				// let assignmentCount = assignmentData.length;
 
-
 				// req.user.id grabs the id of currently signed in user from passport
 				db.Student.findAll({
 					raw: true,
@@ -115,20 +114,12 @@ module.exports = function (app) {
 
 									studentObj.grades.push(userData[i]['Grades.gradeVal']);
 								}
-
 								// console.log(`Reassigned assignment ID is ${assignmentId}`)
-
-
 							}
-
 						}
-
-
-
 						// console.log(studentData);
 
 						res.render("viewByStudents", { students: studentData, assignments: assignmentData });
-						// });
 					});
 			})
 	});
@@ -148,6 +139,12 @@ module.exports = function (app) {
 	app.get("/grades", isAuthenticated, function (req, res) {
 		res.render("grades");
 	});
+
+	// End passport session on logout
+	app.get('/logout', function(req, res){
+		req.logout();
+		res.redirect('/');
+	  });
 
 	//Catch all
 	app.get("*", function (req, res) {

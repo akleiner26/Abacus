@@ -2,6 +2,16 @@
     margin: 10px 0px;
 }
 
+/* Students Table */
+.studentTable {
+    background: #f7f6f6;
+    border-radius: 5px;
+}
+
+.student-table-head {
+    background: #421c52;
+    color: white;
+}
 
 /* Model background */
 .modal {
@@ -25,7 +35,7 @@
     margin: auto;
     padding: 0;
     padding-bottom: 20px;
-    border: 1px solid #888;
+    border: 1px solid #421c52;;
     width: 80%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
@@ -55,7 +65,7 @@
 
 .modal-header {
     padding: 2px 16px;
-    background-color: darkgray;
+    background-color: #421c52;;
     color: white;
 }
   

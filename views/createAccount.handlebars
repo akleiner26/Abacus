@@ -1,8 +1,17 @@
-{{!-- NOTES --}}
-{{!-- Look into error msg -- not sure how it exactly works --}}
-{{!-- Check/test link to signin at bottom of page --}}
+{{!-- Start navbar --}}
+<nav class="navbar navbar-light bg-light fixed-top border-bottom shadow-sm">
+    <div>
+        <a href="/create-account" class="navbar-title">ABACUS</a>
+    </div>
 
-<!-- Insert navbar -->
+    <div class="d-flex flex-row">
+        <div class=" d-flex flex-row navbar-nav mr-auto mt-2 mt-lg-0">
+            <a id="navLink1" class="nav-link nav-item" href="/">Sign In</a>
+            <a id="navLink2" class="nav-link nav-item active" href="/create-account">Register</a>
+        </div>
+    </div>
+</nav>
+{{!-- End navbar --}}
 
 <div class="container register-signin-wrapper">
 
@@ -49,12 +58,14 @@
                 <div class="form-group">
                     <label for="inputEmail1">Email address</label>
                     <input type="email" class="form-control" id="email-input" placeholder="Email">
+                    <div id="emailErrorContainer"></div>
                 </div>
 
                 {{!-- Password --}}
                 <div class="form-group">
                     <label for="inputPassword1">Password</label>
                     <input type="password" class="form-control" id="password-input" placeholder="Password">
+                    <div id="passErrorContainer"></div>
                 </div>
 
                 {{!-- Error message --}}
