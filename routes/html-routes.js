@@ -22,9 +22,9 @@ module.exports = function (app) {
 
 
 	//Create Assignment
-	app.get("/createAssignment", function (req, res) {
-		res.render("createAssignment");
-	});
+	// app.get("/createAssignment", function (req, res) {
+	// 	res.render("createAssignment");
+	// });
 
 	//Get all assigments
 	app.get("/assignments", isAuthenticated, function (req, res) {
