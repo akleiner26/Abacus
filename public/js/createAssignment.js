@@ -12,6 +12,19 @@ $(document).ready(function () {
 	let addModal = $("#addModal");
 	let closeBtn2 = $("#closeBtn2")
 	
+	function createAssign(title, description, assignment_date, due_date, subject) {
+		$.post("/api/createAssignment", {
+			title: title,
+			description: description,
+			assignment_date: assignment_date,
+			due_date: due_date,
+			subject: subject
+		})
+			.then(function (data) {
+				window.location.replace("/assignments");
+			})
+	}
+
 	addAssign.on("click", function () {
         addModal.css("display", "block");
 	})
@@ -41,18 +54,5 @@ $(document).ready(function () {
 		assignDate.val("");
 		dueDate.val("");
 		subject.val("");
-
-		function createAssign(title, description, assignment_date, due_date, subject) {
-			$.post("/api/createAssignment", {
-				title: title,
-				description: description,
-				assignment_date: assignment_date,
-				due_date: due_date,
-				subject: subject
-			})
-				.then(function (data) {
-					window.location.replace("/assignments");
-				})
-		}
 	});
 });
