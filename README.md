@@ -5,7 +5,7 @@
   ## Table of Contents
   *  [Installation](#Installation)
   *  [Usage](#Usage)
-  *  [Images]
+  *  [Images](#images)
   *  [Links](#Links)
   *  [Contributors](#Contributors)
   *  [License](#License)
@@ -19,11 +19,21 @@
 
   ## Usage
   To run locally, use npm start from the command line. Or follow the link below to the deployed app on heroku.
+
   ## Images
-  ![1](https://github.com/akleiner26/abacus/blob/master/public/Assets/Capture%20d%E2%80%99%C3%A9cran%20(38).png)
-  ![2](https://github.com/akleiner26/abacus/blob/master/public/Assets/Capture%20d%E2%80%99%C3%A9cran%20(39).png)
-  ![3](https://github.com/akleiner26/abacus/blob/master/public/Assets/Capture%20d%E2%80%99%C3%A9cran%20(40).png)
-  ![4](https://github.com/akleiner26/abacus/blob/master/public/Assets/Capture%20d%E2%80%99%C3%A9cran%20(41).png)
+
+  ### LogIn
+  <img src="./public/assets/Capture%20d’écran%20(38).png" alt="Screenshot of entering site">
+
+  ### User Portal
+  <img src="./public/assets/Capture%20d’écran%20(39).png" alt="Screenshot of the User portal">
+ 
+ ### My Students
+ <img src="./public/assets/Capture%20d’écran%20(40).png" alt="Screenshot of the students Portal">
+
+### Assignments
+<img src="./public/assets/Capture%20d’écran%20(41).png" alt="Screenshot of assignments portal">
+
   # Links
 
   1. [Link to Deployed Application](https://github.com/akleiner26/Abacus)
