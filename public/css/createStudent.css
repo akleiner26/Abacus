@@ -9,6 +9,10 @@
     width: 100%;
 }
 
+.overflow {
+    overflow-x: scroll;
+}
+
 .student-table-head {
     background: #800080;
     width: 100%;
