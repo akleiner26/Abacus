@@ -20,6 +20,14 @@
   ## Usage
   To run locally, use npm start from the command line. Or follow the link below to the deployed app on heroku.
 
+  A Test login available for use is: 
+  email: daveL@gmail.com
+  password: password1
+
+  If you'd like to see PassportJS working, you can use this second test login:
+  email: vinceG@gmail.com
+  password: password2
+
   ## Images
 
   ### LogIn
